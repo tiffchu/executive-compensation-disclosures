@@ -5,3 +5,4 @@ node_modules/
 *.egg-info/
 outputs/*/previews/
 outputs/**/*.inspect.ndjson
+~$*.xlsx

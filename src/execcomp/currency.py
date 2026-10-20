@@ -3,10 +3,15 @@ from decimal import Decimal
 from pathlib import Path
 import hashlib, json
 
+ANNUAL_RATE_PAGE='https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/'
+
+def annual_rate_url(year):
+    return f'https://www.bankofcanada.ca/valet/observations/group/FX_RATES_ANNUAL/json?start_date={year}-01-01&end_date={year}-12-31'
+
 def load_snapshot(path, year):
     path=Path(path); raw=path.read_bytes()
     metadata=json.loads(path.with_suffix(path.suffix+'.meta.json').read_text())
-    url=f'https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date={year}-01-01&end_date={year}-12-31'
+    url=annual_rate_url(year)
     digest=hashlib.sha256(raw).hexdigest()
     if metadata['url']!=url or metadata['sha256']!=digest:
         raise ValueError('Official FX snapshot URL/hash does not match retained evidence')
@@ -14,17 +19,17 @@ def load_snapshot(path, year):
     return result
 
 def select_rate(payload, year):
-    cutoff = date(year,12,31)
     choices = []
     for item in payload.get('observations',[]):
         observed = date.fromisoformat(item['d'])
-        raw = item.get('FXUSDCAD',{}).get('v')
-        if raw and observed <= cutoff:
+        raw = item.get('FXAUSDCAD',{}).get('v')
+        if raw and observed.year == year:
             choices.append((observed, Decimal(raw)))
-    if not choices: raise ValueError('No official FXUSDCAD observation on or before cutoff')
-    observed, rate = max(choices)
+    if len(choices)!=1: raise ValueError('Exactly one official FXAUSDCAD annual average is required for the target year')
+    observed, rate = choices[0]
     if rate <= 0: raise ValueError('FX rate must be positive')
-    return {'rate':str(rate),'date':observed.isoformat(),'url':f'https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date={year}-01-01&end_date={year}-12-31'}
+    return {'rate':str(rate),'date':None,'observation_label':observed.isoformat(),'period':str(year),
+        'basis':'annual_average','series':'FXAUSDCAD','url':ANNUAL_RATE_PAGE,'data_url':annual_rate_url(year)}
 
 def cad(amount, currency, units, fx):
     if amount is None: return None, None, False, 'Source value unavailable'

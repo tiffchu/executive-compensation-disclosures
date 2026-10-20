@@ -1,9 +1,11 @@
 # Run report: fiscal years ending in 2025
 
-Started locally: 2026-10-20T12:48:04.822745-07:00
+Started locally: 2026-10-20T14:29:57.564827-07:00
 
 Collected 16 executive records across 3 companies.
 Ranked 16 confirmed totals. 40 unresolved field or collection items.
+
+USD conversion: Bank of Canada annual average for 2025, 1.3978 CAD per USD. Source: https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/
 
 Dashes remain null. Not applicable and not disclosed remain distinct. Missing components do not invalidate an independently verified total.
 
@@ -57,6 +59,8 @@ Reconciliation is incomplete when any source component is nonnumeric. The diagno
 - HTML/SEC DEF 14A extraction supports reviewed table/column profiles with explicit year/identity rules, spans and exact cell locators. Arbitrary layouts, nested HTML tables and OCR scans are not implemented.
 - New issuers, later years, ambiguous identity matches, restricted sites and unsupported currencies require reviewed inputs. No placeholder rows count as successful collection.
 - Re-run the pipeline to refresh ranking/order after changing source inputs. Workbook formulas show conversions; it is a run snapshot.
+
+Current workbook: compensation_annual_average.xlsx
 
 ## Workbook verification
 Workbook renderer returned Windows shutdown status 3221226505 after export; independent saved-file checks passed.

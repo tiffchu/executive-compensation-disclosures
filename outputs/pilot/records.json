@@ -2,15 +2,21 @@
   "schema_version": "1.0",
   "run": {
     "target_year": 2025,
-    "started_local": "2026-10-20T12:48:04.822745-07:00",
+    "started_local": "2026-10-20T14:29:57.564827-07:00",
     "method": "Deterministic PDF word coordinates and explicit reviewed layout profiles; no generative extraction.",
     "fx": {
-      "rate": "1.3706",
-      "date": "2025-12-31",
-      "url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31",
-      "response_sha256": "f5f854adba424ec93264ab14b33818398396d44502608ee0c7bbdf6cd1243c4e"
+      "rate": "1.3978",
+      "date": null,
+      "observation_label": "2025-01-01",
+      "period": "2025",
+      "basis": "annual_average",
+      "series": "FXAUSDCAD",
+      "url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+      "data_url": "https://www.bankofcanada.ca/valet/observations/group/FX_RATES_ANNUAL/json?start_date=2025-01-01&end_date=2025-12-31",
+      "response_sha256": "74b80c9ef983b7ae46b6bb260098a23695ce95dcf3ec5aaba24d786b296f0c63"
     },
-    "ranking": "Descending confirmed CAD reported totals; competition ranks for ties; unavailable totals unranked."
+    "ranking": "Descending confirmed CAD reported totals; competition ranks for ties; unavailable totals unranked.",
+    "workbook_filename": "compensation_annual_average.xlsx"
   },
   "records": [
     {
@@ -49,7 +55,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "share_awards": {
           "source_label": "Share-Based Awards(3)",
@@ -82,7 +91,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "option_awards": {
           "source_label": "Option-Based Awards(4)",
@@ -115,7 +127,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(5)",
@@ -148,7 +163,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "long_term_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Long-Term Incentive Plans",
@@ -181,7 +199,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "pension": {
           "source_label": "Pension Value(6)",
@@ -214,7 +235,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation(7)",
@@ -247,7 +271,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "total": {
           "source_label": "Total Compensation",
@@ -280,7 +307,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net income",
@@ -303,11 +333,14 @@
             "table_heading": "Consolidated Statements of Income",
             "page": 53
           },
-          "cad": "198454656.4000",
-          "applied_rate": "1.3706",
+          "cad": "202393053.2000",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         }
       },
       "company": "Methanex Corporation",
@@ -358,11 +391,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "1300699.4000",
-          "applied_rate": "1.3706",
+          "cad": "1326512.2000",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "share_awards": {
           "source_label": "Share-Based Awards ($)(1)",
@@ -391,11 +427,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "3741511.8510",
-          "applied_rate": "1.3706",
+          "cad": "3815763.3630",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "option_awards": {
           "source_label": "Option-Based Awards ($)",
@@ -428,7 +467,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Annual Incentive Program ($)(2)",
@@ -457,11 +499,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "1385244.8610",
-          "applied_rate": "1.3706",
+          "cad": "1412735.4930",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "long_term_incentive": {
           "source_label": "Long-Term Incentive Plans ($)",
@@ -494,7 +539,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation ($)(3)",
@@ -523,11 +571,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "205361.1098",
-          "applied_rate": "1.3706",
+          "cad": "209436.5674",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "total": {
           "source_label": "Total Compensation ($)",
@@ -556,11 +607,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "6632817.2218",
-          "applied_rate": "1.3706",
+          "cad": "6764447.6234",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "pension": {
           "source_label": null,
@@ -587,7 +641,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net income (loss)",
@@ -610,11 +667,14 @@
             "table_heading": "CONSOLIDATED STATEMENTS OF OPERATIONS",
             "page": 160
           },
-          "cad": "584833649.4000",
-          "applied_rate": "1.3706",
+          "cad": "596439862.2000",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         }
       },
       "company": "B2Gold Corp.",
@@ -669,7 +729,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "share_awards": {
           "source_label": "Share-Based Awards(3)",
@@ -702,7 +765,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "option_awards": {
           "source_label": "Option-Based Awards(4)",
@@ -735,7 +801,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(5)",
@@ -768,7 +837,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "long_term_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Long-Term Incentive Plans",
@@ -801,7 +873,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "pension": {
           "source_label": "Pension Value(6)",
@@ -834,7 +909,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation(7)",
@@ -867,7 +945,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "total": {
           "source_label": "Total Compensation",
@@ -900,7 +981,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net income",
@@ -923,11 +1007,14 @@
             "table_heading": "Consolidated Statements of Income",
             "page": 53
           },
-          "cad": "198454656.4000",
-          "applied_rate": "1.3706",
+          "cad": "202393053.2000",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         }
       },
       "company": "Methanex Corporation",
@@ -978,11 +1065,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "650349.7000",
-          "applied_rate": "1.3706",
+          "cad": "663256.1000",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "share_awards": {
           "source_label": "Share-Based Awards ($)(1)",
@@ -1011,11 +1101,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "2120891.1108",
-          "applied_rate": "1.3706",
+          "cad": "2162980.8804",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "option_awards": {
           "source_label": "Option-Based Awards ($)",
@@ -1048,7 +1141,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Annual Incentive Program ($)(2)",
@@ -1077,11 +1173,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "519466.9942",
-          "applied_rate": "1.3706",
+          "cad": "529775.9846",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "long_term_incentive": {
           "source_label": "Long-Term Incentive Plans ($)",
@@ -1114,7 +1213,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation ($)(3)",
@@ -1143,11 +1245,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "80890.0708",
-          "applied_rate": "1.3706",
+          "cad": "82495.3604",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "total": {
           "source_label": "Total Compensation ($)",
@@ -1176,11 +1281,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "3371597.8758",
-          "applied_rate": "1.3706",
+          "cad": "3438508.3254",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "pension": {
           "source_label": null,
@@ -1207,7 +1315,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net income (loss)",
@@ -1230,11 +1341,14 @@
             "table_heading": "CONSOLIDATED STATEMENTS OF OPERATIONS",
             "page": 160
           },
-          "cad": "584833649.4000",
-          "applied_rate": "1.3706",
+          "cad": "596439862.2000",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         }
       },
       "company": "B2Gold Corp.",
@@ -1285,11 +1399,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "650349.7000",
-          "applied_rate": "1.3706",
+          "cad": "663256.1000",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "share_awards": {
           "source_label": "Share-Based Awards ($)(1)",
@@ -1318,11 +1435,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "2120891.1108",
-          "applied_rate": "1.3706",
+          "cad": "2162980.8804",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "option_awards": {
           "source_label": "Option-Based Awards ($)",
@@ -1355,7 +1475,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Annual Incentive Program ($)(2)",
@@ -1384,11 +1507,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "519466.9942",
-          "applied_rate": "1.3706",
+          "cad": "529775.9846",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "long_term_incentive": {
           "source_label": "Long-Term Incentive Plans ($)",
@@ -1421,7 +1547,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation ($)(3)",
@@ -1450,11 +1579,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "74721.0002",
-          "applied_rate": "1.3706",
+          "cad": "76203.8626",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "total": {
           "source_label": "Total Compensation ($)",
@@ -1483,11 +1615,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "3365428.8052",
-          "applied_rate": "1.3706",
+          "cad": "3432216.8276",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "pension": {
           "source_label": null,
@@ -1514,7 +1649,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net income (loss)",
@@ -1537,11 +1675,14 @@
             "table_heading": "CONSOLIDATED STATEMENTS OF OPERATIONS",
             "page": 160
           },
-          "cad": "584833649.4000",
-          "applied_rate": "1.3706",
+          "cad": "596439862.2000",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         }
       },
       "company": "B2Gold Corp.",
@@ -1592,11 +1733,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "625336.2500",
-          "applied_rate": "1.3706",
+          "cad": "637746.2500",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "share_awards": {
           "source_label": "Share-Based Awards ($)(1)",
@@ -1625,11 +1769,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "2070864.2108",
-          "applied_rate": "1.3706",
+          "cad": "2111961.1804",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "option_awards": {
           "source_label": "Option-Based Awards ($)",
@@ -1662,7 +1809,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Annual Incentive Program ($)(2)",
@@ -1691,11 +1841,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "499487.7580",
-          "applied_rate": "1.3706",
+          "cad": "509400.2540",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "long_term_incentive": {
           "source_label": "Long-Term Incentive Plans ($)",
@@ -1728,7 +1881,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation ($)(3)",
@@ -1757,11 +1913,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "64303.0696",
-          "applied_rate": "1.3706",
+          "cad": "65579.1848",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "total": {
           "source_label": "Total Compensation ($)",
@@ -1790,11 +1949,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "3259991.2884",
-          "applied_rate": "1.3706",
+          "cad": "3324686.8692",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "pension": {
           "source_label": null,
@@ -1821,7 +1983,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net income (loss)",
@@ -1844,11 +2009,14 @@
             "table_heading": "CONSOLIDATED STATEMENTS OF OPERATIONS",
             "page": 160
           },
-          "cad": "584833649.4000",
-          "applied_rate": "1.3706",
+          "cad": "596439862.2000",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         }
       },
       "company": "B2Gold Corp.",
@@ -1903,7 +2071,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "share_awards": {
           "source_label": "Share Based Awards (1)(2)",
@@ -1936,7 +2107,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "option_awards": {
           "source_label": "Option Based Awards",
@@ -1969,7 +2143,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(3)",
@@ -2002,7 +2179,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "long_term_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Long-term Incentive Plans",
@@ -2035,7 +2215,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "pension": {
           "source_label": "Pension Value(4)",
@@ -2068,7 +2251,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation(5)",
@@ -2101,7 +2287,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "total": {
           "source_label": "Total Compensation(6)",
@@ -2134,7 +2323,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net loss",
@@ -2161,7 +2353,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         }
       },
       "company": "Interfor Corporation",
@@ -2216,7 +2411,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "share_awards": {
           "source_label": "Share-Based Awards(3)",
@@ -2249,7 +2447,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "option_awards": {
           "source_label": "Option-Based Awards(4)",
@@ -2282,7 +2483,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(5)",
@@ -2315,7 +2519,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "long_term_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Long-Term Incentive Plans",
@@ -2348,7 +2555,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "pension": {
           "source_label": "Pension Value(6)",
@@ -2381,7 +2591,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation(7)",
@@ -2414,7 +2627,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "total": {
           "source_label": "Total Compensation",
@@ -2447,7 +2663,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net income",
@@ -2470,11 +2689,14 @@
             "table_heading": "Consolidated Statements of Income",
             "page": 53
           },
-          "cad": "198454656.4000",
-          "applied_rate": "1.3706",
+          "cad": "202393053.2000",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         }
       },
       "company": "Methanex Corporation",
@@ -2525,11 +2747,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "600322.8000",
-          "applied_rate": "1.3706",
+          "cad": "612236.4000",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "share_awards": {
           "source_label": "Share-Based Awards ($)(1)",
@@ -2558,11 +2783,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "1820729.7108",
-          "applied_rate": "1.3706",
+          "cad": "1856862.6804",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "option_awards": {
           "source_label": "Option-Based Awards ($)",
@@ -2595,7 +2823,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Annual Incentive Program ($)(2)",
@@ -2624,11 +2855,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "479508.5218",
-          "applied_rate": "1.3706",
+          "cad": "489024.5234",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "long_term_incentive": {
           "source_label": "Long-Term Incentive Plans ($)",
@@ -2661,7 +2895,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation ($)(3)",
@@ -2690,11 +2927,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "68420.3520",
-          "applied_rate": "1.3706",
+          "cad": "69778.1760",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "total": {
           "source_label": "Total Compensation ($)",
@@ -2723,11 +2963,14 @@
             "locator": null,
             "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c"
           },
-          "cad": "2968981.3846",
-          "applied_rate": "1.3706",
+          "cad": "3027901.7798",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         },
         "pension": {
           "source_label": null,
@@ -2754,7 +2997,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net income (loss)",
@@ -2777,11 +3023,14 @@
             "table_heading": "CONSOLIDATED STATEMENTS OF OPERATIONS",
             "page": 160
           },
-          "cad": "584833649.4000",
-          "applied_rate": "1.3706",
+          "cad": "596439862.2000",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         }
       },
       "company": "B2Gold Corp.",
@@ -2836,7 +3085,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "share_awards": {
           "source_label": "Share-Based Awards(3)",
@@ -2869,7 +3121,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "option_awards": {
           "source_label": "Option-Based Awards(4)",
@@ -2902,7 +3157,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(5)",
@@ -2935,7 +3193,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "long_term_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Long-Term Incentive Plans",
@@ -2968,7 +3229,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "pension": {
           "source_label": "Pension Value(6)",
@@ -3001,7 +3265,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation(7)",
@@ -3034,7 +3301,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "total": {
           "source_label": "Total Compensation",
@@ -3067,7 +3337,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net income",
@@ -3090,11 +3363,14 @@
             "table_heading": "Consolidated Statements of Income",
             "page": 53
           },
-          "cad": "198454656.4000",
-          "applied_rate": "1.3706",
+          "cad": "202393053.2000",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         }
       },
       "company": "Methanex Corporation",
@@ -3149,7 +3425,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "share_awards": {
           "source_label": "Share-Based Awards(3)",
@@ -3182,7 +3461,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "option_awards": {
           "source_label": "Option-Based Awards(4)",
@@ -3215,7 +3497,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(5)",
@@ -3248,7 +3533,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "long_term_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Long-Term Incentive Plans",
@@ -3281,7 +3569,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "pension": {
           "source_label": "Pension Value(6)",
@@ -3314,7 +3605,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation(7)",
@@ -3347,7 +3641,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "total": {
           "source_label": "Total Compensation",
@@ -3380,7 +3677,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net income",
@@ -3403,11 +3703,14 @@
             "table_heading": "Consolidated Statements of Income",
             "page": 53
           },
-          "cad": "198454656.4000",
-          "applied_rate": "1.3706",
+          "cad": "202393053.2000",
+          "applied_rate": "1.3978",
           "converted_from_usd": true,
-          "fx_date": "2025-12-31",
-          "fx_url": "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31"
+          "fx_date": null,
+          "fx_url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+          "fx_period": "2025",
+          "fx_basis": "annual_average",
+          "fx_observation_label": "2025-01-01"
         }
       },
       "company": "Methanex Corporation",
@@ -3462,7 +3765,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "share_awards": {
           "source_label": "Share Based Awards (1)(2)",
@@ -3495,7 +3801,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "option_awards": {
           "source_label": "Option Based Awards",
@@ -3528,7 +3837,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(3)",
@@ -3561,7 +3873,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "long_term_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Long-term Incentive Plans",
@@ -3594,7 +3909,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "pension": {
           "source_label": "Pension Value(4)",
@@ -3627,7 +3945,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation(5)",
@@ -3660,7 +3981,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "total": {
           "source_label": "Total Compensation(6)",
@@ -3693,7 +4017,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net loss",
@@ -3720,7 +4047,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         }
       },
       "company": "Interfor Corporation",
@@ -3775,7 +4105,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "share_awards": {
           "source_label": "Share Based Awards (1)(2)",
@@ -3808,7 +4141,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "option_awards": {
           "source_label": "Option Based Awards",
@@ -3841,7 +4177,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(3)",
@@ -3874,7 +4213,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "long_term_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Long-term Incentive Plans",
@@ -3907,7 +4249,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "pension": {
           "source_label": "Pension Value(4)",
@@ -3940,7 +4285,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation(5)",
@@ -3973,7 +4321,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "total": {
           "source_label": "Total Compensation(6)",
@@ -4006,7 +4357,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net loss",
@@ -4033,7 +4387,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         }
       },
       "company": "Interfor Corporation",
@@ -4088,7 +4445,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "share_awards": {
           "source_label": "Share Based Awards (1)(2)",
@@ -4121,7 +4481,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "option_awards": {
           "source_label": "Option Based Awards",
@@ -4154,7 +4517,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(3)",
@@ -4187,7 +4553,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "long_term_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Long-term Incentive Plans",
@@ -4220,7 +4589,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "pension": {
           "source_label": "Pension Value(4)",
@@ -4253,7 +4625,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation(5)",
@@ -4286,7 +4661,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "total": {
           "source_label": "Total Compensation(6)",
@@ -4319,7 +4697,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net loss",
@@ -4346,7 +4727,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         }
       },
       "company": "Interfor Corporation",
@@ -4401,7 +4785,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "share_awards": {
           "source_label": "Share Based Awards (1)(2)",
@@ -4434,7 +4821,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "option_awards": {
           "source_label": "Option Based Awards",
@@ -4467,7 +4857,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(3)",
@@ -4500,7 +4893,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "long_term_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Long-term Incentive Plans",
@@ -4533,7 +4929,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "pension": {
           "source_label": "Pension Value(4)",
@@ -4566,7 +4965,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation(5)",
@@ -4599,7 +5001,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "total": {
           "source_label": "Total Compensation(6)",
@@ -4632,7 +5037,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net loss",
@@ -4659,7 +5067,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         }
       },
       "company": "Interfor Corporation",
@@ -4714,7 +5125,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "share_awards": {
           "source_label": "Share Based Awards (1)(2)",
@@ -4747,7 +5161,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "option_awards": {
           "source_label": "Option Based Awards",
@@ -4780,7 +5197,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "annual_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(3)",
@@ -4813,7 +5233,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "long_term_incentive": {
           "source_label": "Non-Equity Incentive Plan Compensation - Long-term Incentive Plans",
@@ -4846,7 +5269,10 @@
           "applied_rate": null,
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "pension": {
           "source_label": "Pension Value(4)",
@@ -4879,7 +5305,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "other": {
           "source_label": "All Other Compensation(5)",
@@ -4912,7 +5341,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "total": {
           "source_label": "Total Compensation(6)",
@@ -4945,7 +5377,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         },
         "net_income": {
           "source_label": "Net loss",
@@ -4972,7 +5407,10 @@
           "applied_rate": "1",
           "converted_from_usd": false,
           "fx_date": null,
-          "fx_url": null
+          "fx_url": null,
+          "fx_period": null,
+          "fx_basis": null,
+          "fx_observation_label": null
         }
       },
       "company": "Interfor Corporation",

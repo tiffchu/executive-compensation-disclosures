@@ -5,7 +5,7 @@ from .config import RunConfig
 from .inputs import load_companies, match_executive
 from .documents import acquire, discover, fetch
 from .extraction import pdf_evidence, extract_compensation, extract_net_income, html_evidence, extract_html_compensation
-from .currency import cad, select_rate, load_snapshot
+from .currency import cad, select_rate, load_snapshot, annual_rate_url
 from .validation import reconcile, rank_records
 
 def json_write(path, obj):
@@ -14,11 +14,11 @@ def json_write(path, obj):
 def run(root, input_path, output_dir, config=None, profile_dir=None, fx_path=None):
     root=Path(root); output=Path(output_dir); output.mkdir(parents=True,exist_ok=True)
     config=config or RunConfig.start(); profiles=Path(profile_dir or root/'config')
-    fx_path=Path(fx_path or root/'data/documents'/f'fx_{config.target_year}.json')
+    fx_path=Path(fx_path or root/'data/documents'/f'fx_annual_{config.target_year}.json')
     issues=[]; records=[]; contexts=[]; candidates=[]
     try:
         if not fx_path.exists():
-            url=f'https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date={config.target_year}-01-01&end_date={config.target_year}-12-31'
+            url=annual_rate_url(config.target_year)
             payload=fetch(url); select_rate(json.loads(payload),config.target_year)
             fx_path.parent.mkdir(parents=True,exist_ok=True); fx_path.write_bytes(payload)
             json_write(fx_path.with_suffix(fx_path.suffix+'.meta.json'),{'url':url,'filename':fx_path.name,'sha256':hashlib.sha256(payload).hexdigest()})
@@ -84,7 +84,9 @@ def run(root, input_path, output_dir, config=None, profile_dir=None, fx_path=Non
                     if field != 'net_income': value['evidence']={'document_url':url,'filename':Path(source_location).name,'document_date':profile['document_date'],'fiscal_end':profile['fiscal_end'],'table_heading':'Summary Compensation Table','page':value['page'],'locator':value.get('locator'),'sha256':evidence['sha256']}
                     converted,rate,was_usd,reason=cad(value['amount'],value['currency'],value['units'],fx)
                     value.update(cad=converted,applied_rate=rate,converted_from_usd=was_usd,
-                        fx_date=fx['date'] if was_usd else None,fx_url=fx['url'] if was_usd else None)
+                        fx_date=fx['date'] if was_usd else None,fx_url=fx['url'] if was_usd else None,
+                        fx_period=fx['period'] if was_usd else None,fx_basis=fx['basis'] if was_usd else None,
+                        fx_observation_label=fx['observation_label'] if was_usd else None)
                     if reason and not value.get('reason'): value['reason']=reason
                     if value['amount'] is not None and converted is None: value['status']='uncertain'
                     if converted is None: issues.append({'scope':scope+' / '+record['executive']+' / '+field,'reason':value['reason']})
@@ -107,6 +109,7 @@ def run(root, input_path, output_dir, config=None, profile_dir=None, fx_path=Non
     lines=[f'# Run report: fiscal years ending in {config.target_year}',f'\nStarted locally: {config.started_local}',
         f'\nCollected {len(records)} executive records across {len(set(r["company"] for r in records))} companies.',
         f'Ranked {sum(r["rank"] is not None for r in records)} confirmed totals. {len(issues)} unresolved field or collection items.',
+        f'\nUSD conversion: Bank of Canada annual average for {config.target_year}, '+(fx['rate']+' CAD per USD. Source: '+fx['url'] if fx else 'Needs manual input.'),
         '\nDashes remain null. Not applicable and not disclosed remain distinct. Missing components do not invalidate an independently verified total.',
         '\nReconciliation is incomplete when any source component is nonnumeric. The diagnostic sum of known components is not a reconstructed total.',
         '\n## Unresolved items']

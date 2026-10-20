@@ -5,6 +5,7 @@ import {Workbook,SpreadsheetFile} from '@oai/artifact-tool';
 
 const input=path.resolve(process.argv[2]||'outputs/pilot/records.json');
 const dir=path.dirname(input), data=JSON.parse(await fs.readFile(input,'utf8'));
+const workbookName=data.run.workbook_filename||'compensation_annual_average.xlsx';
 const wb=Workbook.create();
 const results=wb.worksheets.add('Results'), source=wb.worksheets.add('Source data');
 const ink='#182D47', muted='#52657A', pale='#EFF3F8', numberFormat='#,##0;(#,##0);0';
@@ -31,7 +32,7 @@ for(const r of data.records){
   index.set(r.record_id+'|'+field,row);
   sourceRows.push([r.record_id,r.company,r.executive,date(r.fiscal_end),field,v.source_label||'(not separately disclosed)',v.raw??'(blank)',
    v.amount===null?missing:Number(v.amount),v.currency||missing,v.units??missing,v.applied_rate===null?missing:Number(v.applied_rate),null,
-   v.status,v.converted_from_usd?'Yes':'No',date(v.fx_date),v.fx_url||'',date(e.document_date),e.table_heading||'',e.page||e.locator||missing,e.filename||'',
+   v.status,v.converted_from_usd?'Yes':'No',v.fx_period?Number(v.fx_period):null,v.fx_url||'',date(e.document_date),e.table_heading||'',e.page||e.locator||missing,e.filename||'',
    e.document_url||'',e.sha256||'',v.footnote_reference||'',v.mapping||'',v.reason||'']);
  }
 }
@@ -40,7 +41,7 @@ source.getRange('A2').values=[['Original figures and conversion evidence']];
 source.getRange('A2').format.font={name:'Arial',size:14,bold:true,color:ink};
 source.getRange('A3').values=[['CAD = original amount × source multiplier × FX to CAD. Exact page text and footnotes begin at AA5.']];
 source.getRange('A3').format.font={italic:true,color:muted};
-source.getRange('A5:Y5').values=[['Record ID','Company','Executive','Fiscal end','Field','Exact source label','Original cell','Original amount','Currency','Source multiplier','FX to CAD','Full-dollar CAD','Source meaning','Converted from USD','FX observation date','Official rate URL','Document date','Table heading','PDF page / HTML locator','Filename','Document URL','SHA256','Footnote reference','Mapping explanation','Review reason']];
+source.getRange('A5:Y5').values=[['Record ID','Company','Executive','Fiscal end','Field','Exact source label','Original cell','Original amount','Currency','Source multiplier','FX to CAD','Full-dollar CAD','Source meaning','Converted from USD','FX annual-average year','Official rate URL','Document date','Table heading','PDF page / HTML locator','Filename','Document URL','SHA256','Footnote reference','Mapping explanation','Review reason']];
 header(source,'A5:Y5');
 if(sourceRows.length){
  source.getRange(`A6:Y${sourceRows.length+5}`).values=sourceRows.map(row=>row.map(literal));
@@ -57,7 +58,8 @@ if(sourceRows.length){
  source.getRange(`A6:Y${sourceRows.length+5}`).format.rowHeight=48;
  for(const col of ['F','P','R','T','U','V','W','X','Y'])source.getRange(`${col}6:${col}${sourceRows.length+5}`).format.wrapText=true;
 }
-for(const col of ['D','O','Q'])source.getRange(`${col}6:${col}${Math.max(6,sourceRows.length+5)}`).format.numberFormat='yyyy-mm-dd';
+for(const col of ['D','Q'])source.getRange(`${col}6:${col}${Math.max(6,sourceRows.length+5)}`).format.numberFormat='yyyy-mm-dd';
+source.getRange(`O6:O${Math.max(6,sourceRows.length+5)}`).format.numberFormat='0';
 // Full exact text is readable in a separate area of the same Source data sheet.
 const evidenceRows=[];
 for(const s of data.sources){
@@ -85,7 +87,7 @@ results.getRange('A2').values=[[`Executive compensation for fiscal years ending 
 results.getRange('A2').format.font={name:'Arial',size:14,bold:true,color:ink};
 results.getRange('A3').values=[['Full dollars CAD. Rank covers the supplied company/executive universe. Amber cells require manual input; verified totals remain ranked.']];
 results.getRange('A3').format.font={italic:true,color:muted};
-results.getRange('A4').values=[[`USD rate: ${data.run.fx?.rate||missing} CAD per USD, observed ${data.run.fx?.date||missing}. Already reported CAD amounts are retained.`]];
+results.getRange('A4').values=[[`USD annual average (${data.run.target_year}): ${data.run.fx?.rate||missing} CAD per USD. Already reported CAD amounts are retained.`]];
 results.getRange('A4').format.font={italic:true,color:muted};
 results.getRange('A6:S6').values=[['Rank','Company','Executive','Fiscal year end',...names,'Reported position','Review status','Reconciliation','Reported minus known components (original currency)','Source ID','Record ID']];
 header(results,'A6:S6');
@@ -135,7 +137,7 @@ for(const [name,sheetName,range] of [['results','Results',`A1:G${Math.max(8,resu
  const image=await wb.render({sheetName,range,scale:1.5,format:'png'});
  await fs.writeFile(path.join(dir,'previews',name+'.png'),new Uint8Array(await image.arrayBuffer()));
 }
-const xlsx=await SpreadsheetFile.exportXlsx(wb); await xlsx.save(path.join(dir,'compensation.xlsx'));
-console.log(JSON.stringify({records:data.records.length,workbook:path.join(dir,'compensation.xlsx'),verification:'All monetary formulas and ranks match pipeline; conversion perturbation restored.'}));
+const xlsx=await SpreadsheetFile.exportXlsx(wb); await xlsx.save(path.join(dir,workbookName));
+console.log(JSON.stringify({records:data.records.length,workbook:path.join(dir,workbookName),verification:'All monetary formulas and ranks match pipeline; conversion perturbation restored.'}));
 // All writes and validations above are awaited before shutting down the renderer.
 process.exit(0);

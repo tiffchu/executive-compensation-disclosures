@@ -6,6 +6,8 @@ Collect original executive compensation disclosures without estimates or generat
 
 `outputs/pilot/` contains the workbook, JSON records, unresolved-item report and saved-workbook verification. The run covers fiscal years ending in **2025**, resolved from the local run date in 2026.
 
+The current workbook is **`compensation_annual_average.xlsx`**, using the requested 1.3978 rate. The earlier `compensation.xlsx` is retained as the historical year-end-rate version because it was open and locked during the update. The current JSON and run report describe the annual-average workbook.
+
 | Company | Executives | Compensation source | Audited income source |
 | --- | ---: | --- | --- |
 | Interfor | 6, including two former officers | 2026 circular, PDF pages 54–55 | 2025 financial statements, PDF page 8 |
@@ -16,7 +18,7 @@ The original PDFs and official Bank of Canada response are retained in `data/doc
 
 All **16 reported totals** and all three consolidated income figures were collected. **38 component fields** remain null: 33 source dashes with no verified numeric meaning and B2Gold's five absent pension columns. The report also flags **two CAD $1 differences** between Interfor's reported totals and the known components, for Fillinger and Hartnett. No rounding allowance was invented. Reconciliation remains incomplete where any component is nonnumeric.
 
-The official FXUSDCAD observation is **1.3706 on December 31, 2025**. It applies to every USD value. Interfor and Methanex SCT figures are already reported in CAD; issuer translations are preserved without converting them twice. Both B2Gold compensation and USD audited income figures are converted with the calendar year-end rate. Methanex income includes NCI, rather than the shareholder-only subtotal used by many summaries.
+The official Bank of Canada **2025 annual-average rate is 1.3978 CAD per USD** (series FXAUSDCAD). This replaces the earlier year-end convention at the user's request. It applies to every USD value. Interfor and Methanex SCT figures are already reported in CAD; issuer translations are preserved without converting them twice. Both B2Gold compensation and USD audited income figures use the annual-average rate. The annual series label `2025-01-01` identifies the entire 2025 period; it is not a daily observation date. Methanex income includes NCI, rather than the shareholder-only subtotal used by many summaries.
 
 The reference CSV is unchanged at `data/reference/1792523779.6511.csv`, SHA256 `d91f1be5a09c325e093f7d233493c82af13fef8a8541667320f05f0927214b24`. It was used only to select pilot companies and understand the output layout. Its amounts, ranks and FX convention are not collection evidence.
 
@@ -98,13 +100,13 @@ JSON monetary amounts are decimal strings to avoid binary floating-point loss. U
 
 Reported totals are copied independently. Award values remain as disclosed. No new option valuation, realized/vested substitution, compensation-actually-paid substitution or annualization is performed. Net income is separately sourced from the audited consolidated income statement, includes NCI, and excludes comprehensive income, adjusted earnings and owners-only subtotals. A missing income figure does not discard compensation.
 
-For USD, the rate is the last available daily FXUSDCAD observation on or before December 31 of the target calendar year, including non-calendar fiscal issuers. An official raw response is cached; a missing response triggers an attempt to retrieve it. Unsupported currencies/rates remain for manual input. CAD is never converted again.
+For USD, use the Bank of Canada FXAUSDCAD annual average for the target calendar year, including non-calendar fiscal issuers. The official response is cached as `data/documents/fx_annual_<year>.json`, with its source URL and hash. A missing response triggers retrieval; a missing target-year annual rate requires manual input, without falling back to a daily rate or another year. Annual period, series label, basis and URLs are recorded explicitly. The old daily snapshot is retained only as historical evidence. Unsupported currencies/rates remain for manual input. CAD is never converted again.
 
 ## Modules and validation
 
 `config.py` fixes the run date and target year; `inputs.py` groups requests; `documents.py` separates discovery and respectful acquisition; `extraction.py` reads reviewed source cells; `validation.py` preserves missing-value semantics, maps categories, reconciles and ranks; `currency.py` converts using Decimal; `pipeline.py` writes JSON/report; `export.py` checks the saved workbook; `scripts/export_workbook.mjs` renders and exports Excel.
 
-Run `python -m unittest discover -s tests -v`. The **43 tests** cover fiscal-year rollover and actual end dates, multi-year alignment, exact identity/duplicates, company document reuse, category mapping and source-supported arithmetic, zero versus NA/dash/blank, units, FX cutoff/snapshot integrity and CAD preservation, reconciliation, ranking, changed-hash rejection, former officers and reviewed HTML spans/locators. Workbook validation also compares all 144 monetary cells to Python results and changes/restores a conversion input to verify recalculation. Both tabs and original source tables were visually inspected.
+Run `python -m unittest discover -s tests -v`. The **44 tests** cover fiscal-year rollover and actual end dates, multi-year alignment, exact identity/duplicates, company document reuse, category mapping and source-supported arithmetic, zero versus NA/dash/blank, units, exact annual FX selection/snapshot integrity and CAD preservation, reconciliation, ranking, changed-hash rejection, former officers and reviewed HTML spans/locators. Workbook validation also compares all 144 monetary cells to Python results and changes/restores a conversion input to verify recalculation. Both tabs and original source tables were visually inspected.
 
 ## Remaining limits
 

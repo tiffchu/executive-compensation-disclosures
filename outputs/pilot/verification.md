@@ -2,7 +2,9 @@
 
 Verified on October 20, 2026, local America/Los_Angeles date.
 
-- 43 Python tests passed. This includes deterministic PDF multi-year alignment, fiscal-year selection, exact identity matching, document reuse, state distinctions, category mapping, units/FX and official snapshot integrity, reconciliation, ranking, pinned-original rejection and a synthetic HTML definitive-proxy path.
+Current workbook: `compensation_annual_average.xlsx`. The earlier `compensation.xlsx` remains the historical year-end-rate version. Annual-average results were regenerated from the same original disclosures, with CAD figures preserved and all confirmed USD monetary fields multiplied by 1.3978.
+
+- 44 Python tests passed after switching to the official 2025 annual average of 1.3978 CAD per USD. This includes deterministic PDF multi-year alignment, fiscal-year selection, exact identity matching, document reuse, state distinctions, category mapping, annual FX selection and official snapshot integrity, reconciliation, ranking, pinned-original rejection and a synthetic HTML definitive-proxy path.
 - Original Summary Compensation Tables were rendered and visually checked: Interfor PDF page 54, Methanex page 89 and B2Gold page 77. All target-year rows were included: 6, 5 and 5 NEOs respectively. Interfor's two former officers were retained.
 - Separate audited consolidated income statements were rendered and visually checked: Interfor PDF page 8, Methanex page 53 and B2Gold page 160. Net income/loss includes NCI where applicable, before the allocation to owners. Source units are respectively CAD millions, USD thousands and USD thousands.
 - The workbook's Results and Source data sheets were rendered and inspected, including original figures, conversion formulas, source citations, component review markers and exact footnote text. Long labels were wrapped and column widths adjusted.

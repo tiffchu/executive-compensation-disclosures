@@ -68,25 +68,27 @@ class CurrencyTests(unittest.TestCase):
     def test_official_snapshot_integrity(self):
         import hashlib
         with tempfile.TemporaryDirectory(dir=ROOT/'tests') as d:
-            path=Path(d)/'fx.json'; path.write_text(json.dumps({'observations':[{'d':'2025-12-31','FXUSDCAD':{'v':'1.3706'}}]}))
-            meta={'url':'https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=2025-01-01&end_date=2025-12-31','sha256':hashlib.sha256(path.read_bytes()).hexdigest()}
+            path=Path(d)/'fx.json'; path.write_text(json.dumps({'observations':[{'d':'2025-01-01','FXAUSDCAD':{'v':'1.3978'}}]}))
+            meta={'url':'https://www.bankofcanada.ca/valet/observations/group/FX_RATES_ANNUAL/json?start_date=2025-01-01&end_date=2025-12-31','sha256':hashlib.sha256(path.read_bytes()).hexdigest()}
             path.with_suffix('.json.meta.json').write_text(json.dumps(meta))
-            self.assertEqual(load_snapshot(path,2025)['rate'],'1.3706')
+            self.assertEqual(load_snapshot(path,2025)['rate'],'1.3978')
             path.write_text('{}')
             with self.assertRaisesRegex(ValueError,'URL/hash'): load_snapshot(path,2025)
-    def test_last_observation_before_cutoff(self):
-        payload={'observations':[{'d':'2026-01-02','FXUSDCAD':{'v':'2'}},{'d':'2025-12-30','FXUSDCAD':{'v':'1.4'}},{'d':'2025-12-31'}]}
-        self.assertEqual(select_rate(payload,2025)['date'],'2025-12-30')
+    def test_exact_target_annual_average_no_daily_fallback(self):
+        payload={'observations':[{'d':'2026-01-01','FXAUSDCAD':{'v':'2'}},{'d':'2024-01-01','FXAUSDCAD':{'v':'1.3698'}},{'d':'2025-01-01','FXAUSDCAD':{'v':'1.3978'}}]}
+        fx=select_rate(payload,2025)
+        self.assertEqual(fx['rate'],'1.3978'); self.assertEqual(fx['period'],'2025'); self.assertIsNone(fx['date'])
+        with self.assertRaises(ValueError): select_rate({'observations':[{'d':'2025-12-31','FXUSDCAD':{'v':'1.3706'}}]},2025)
     def test_no_rate_fails(self):
         with self.assertRaises(ValueError): select_rate({'observations':[]},2025)
-    def test_usd_units_and_fx(self): self.assertEqual(cad('144794','USD',1000,{'rate':'1.3706'})[0],'198454656.4000')
-    def test_cad_never_double_converted(self): self.assertEqual(cad('3051560','CAD',1,{'rate':'1.3706'})[:3],('3051560','1',False))
+    def test_usd_units_and_fx(self): self.assertEqual(cad('144794','USD',1000,{'rate':'1.3978'})[0],'202393053.2000')
+    def test_cad_never_double_converted(self): self.assertEqual(cad('3051560','CAD',1,{'rate':'1.3978'})[:3],('3051560','1',False))
     def test_millions(self): self.assertEqual(cad('-344.4','CAD',1000000,None)[0],'-344400000.0')
     def test_missing_currency_rate_or_units(self):
         for args in [('1','EUR',1,None),('1','USD',1,None),('1','CAD',100,None),(None,'CAD',1,None)]: self.assertIsNone(cad(*args)[0])
-    def test_same_year_end_rate_noncalendar_company(self):
+    def test_same_annual_rate_noncalendar_company(self):
         # Conversion takes calendar target-year rate, never a company fiscal-end argument.
-        self.assertEqual(cad('10','USD',1,{'rate':'1.3706'})[0],'13.7060')
+        self.assertEqual(cad('10','USD',1,{'rate':'1.3978'})[0],'13.9780')
 
 class ValidationTests(unittest.TestCase):
     def fields(self,total='7'):
@@ -116,6 +118,14 @@ class RealPilotTests(unittest.TestCase):
     def test_three_companies_and_all_neos(self):
         self.assertEqual(len(self.output['records']),16)
         self.assertEqual(len({r['company'] for r in self.output['records']}),3)
+    def test_annual_average_applied_to_all_usd_fields(self):
+        self.assertEqual(self.output['run']['fx']['basis'],'annual_average')
+        for r in self.output['records']:
+            for v in r['fields'].values():
+                if v['cad'] is not None and v['currency']=='USD':
+                    self.assertEqual(v['applied_rate'],'1.3978'); self.assertEqual(v['fx_period'],'2025'); self.assertIsNone(v['fx_date'])
+        clive=next(r for r in self.output['records'] if r['executive']=='Clive Johnson')
+        self.assertEqual(clive['fields']['total']['cad'],'6764447.6234')
     def test_only_target_year_and_independent_sources(self):
         for r in self.output['records']:
             self.assertEqual(r['fiscal_end'],'2025-12-31')
