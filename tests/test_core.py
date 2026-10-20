@@ -4,13 +4,17 @@ from datetime import datetime
 from decimal import Decimal
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 from execcomp.config import ROOT, RunConfig, target_period
-from execcomp.inputs import identity, match_executive, load_companies
+from execcomp.inputs import identity, match_executive, load_companies, output_identity
 from execcomp.validation import parse_amount, map_label, reconcile, rank_records, FIELDS, combine_annual_columns
 from execcomp.currency import cad, select_rate, load_snapshot
 from execcomp.extraction import pdf_evidence, extract_compensation
 from execcomp.documents import html_tables, acquire
 
 class SelectionTests(unittest.TestCase):
+    def test_name_parts_and_lowercase_title(self):
+        self.assertEqual(output_identity('Ian M. Fillinger','President & Chief Executive Officer'),{'first_name':'Ian M.','last_name':'Fillinger','title':'president & chief executive officer'})
+        self.assertEqual(output_identity('S. Bruce Luxmoore','Executive Vice President (Former)(7)(9)')['first_name'],'S. Bruce')
+        self.assertEqual(output_identity('S. Bruce Luxmoore','Executive Vice President (Former)(7)(9)')['title'],'executive vice president (former)')
     def test_local_year_rollover(self):
         self.assertEqual(RunConfig.start(datetime(2026,12,31,23,59)).target_year,2025)
         self.assertEqual(RunConfig.start(datetime(2027,1,1)).target_year,2026)
@@ -65,6 +69,11 @@ class AmountTests(unittest.TestCase):
         self.assertIsNone(combine_annual_columns(columns,{'source_text':'annual','explanation':'x'},'annual')['amount'])
 
 class CurrencyTests(unittest.TestCase):
+    def test_future_run_uses_its_previous_calendar_annual_average(self):
+        config=RunConfig.start(datetime(2027,1,2))
+        fx=select_rate({'observations':[{'d':'2025-01-01','FXAUSDCAD':{'v':'1.3978'}},{'d':'2026-01-01','FXAUSDCAD':{'v':'1.42'}}]},config.target_year)
+        self.assertEqual(fx['period'],'2026'); self.assertEqual(fx['rate'],'1.42')
+        with self.assertRaises(ValueError): select_rate({'observations':[{'d':'2025-01-01','FXAUSDCAD':{'v':'1.3978'}}]},config.target_year)
     def test_official_snapshot_integrity(self):
         import hashlib
         with tempfile.TemporaryDirectory(dir=ROOT/'tests') as d:
@@ -113,6 +122,10 @@ class ValidationTests(unittest.TestCase):
             self.assertEqual(html_tables(p)[0]['rows'][1],['2025','0'])
 
 class RealPilotTests(unittest.TestCase):
+    def test_template_identity_fields_and_original_amounts(self):
+        for r in self.output['records']:
+            self.assertEqual(r['title'],r['title'].lower()); self.assertTrue(r['first_name']); self.assertTrue(r['last_name'])
+            self.assertEqual(r['first_name']+' '+r['last_name'],r['executive'])
     @classmethod
     def setUpClass(cls): cls.output=json.loads((ROOT/'outputs/pilot/records.json').read_text(encoding='utf-8'))
     def test_three_companies_and_all_neos(self):

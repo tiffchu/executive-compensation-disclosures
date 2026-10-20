@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "run": {
     "target_year": 2025,
-    "started_local": "2026-10-20T14:29:57.564827-07:00",
+    "started_local": "2026-10-20T14:38:08.694798-07:00",
     "method": "Deterministic PDF word coordinates and explicit reviewed layout profiles; no generative extraction.",
     "fx": {
       "rate": "1.3978",
@@ -15,8 +15,83 @@
       "data_url": "https://www.bankofcanada.ca/valet/observations/group/FX_RATES_ANNUAL/json?start_date=2025-01-01&end_date=2025-12-31",
       "response_sha256": "74b80c9ef983b7ae46b6bb260098a23695ce95dcf3ec5aaba24d786b296f0c63"
     },
+    "fx_policy": "Bank of Canada FXAUSDCAD annual average for local run calendar year minus one; no daily or prior-year fallback.",
     "ranking": "Descending confirmed CAD reported totals; competition ranks for ties; unavailable totals unranked.",
-    "workbook_filename": "compensation_annual_average.xlsx"
+    "workbook_filename": "execs_comp.xlsx",
+    "template": {
+      "path": "data\\templates\\execs_comp_template.xlsx",
+      "sha256": "370b4d91de66c4c605040de717ba9e1e9e97fb2a00d70cbab14de65e7e1e8831",
+      "mapping": {
+        "template_sha256": "370b4d91de66c4c605040de717ba9e1e9e97fb2a00d70cbab14de65e7e1e8831",
+        "fields": [
+          {
+            "field": "salary",
+            "usd": "H",
+            "cad": "J"
+          },
+          {
+            "field": "share_awards",
+            "usd": "L",
+            "cad": "N"
+          },
+          {
+            "field": "option_awards",
+            "usd": "P",
+            "cad": "R"
+          },
+          {
+            "field": "annual_incentive",
+            "usd": "T",
+            "cad": "V"
+          },
+          {
+            "field": "pension",
+            "usd": "X",
+            "cad": "Z"
+          },
+          {
+            "field": "other",
+            "usd": "AB",
+            "cad": "AD"
+          },
+          {
+            "field": "total",
+            "usd": "AF",
+            "cad": "AG"
+          },
+          {
+            "field": "long_term_incentive",
+            "usd": "AL",
+            "cad": "AM"
+          }
+        ],
+        "blank_columns": [
+          "C",
+          "D",
+          "G",
+          "I",
+          "K",
+          "M",
+          "O",
+          "Q",
+          "S",
+          "U",
+          "W",
+          "Y",
+          "AA",
+          "AC",
+          "AE",
+          "AH",
+          "AI"
+        ],
+        "first_name": "A",
+        "last_name": "B",
+        "company": "E",
+        "title": "F",
+        "symbol": "AJ",
+        "rank": "AK"
+      }
+    }
   },
   "records": [
     {
@@ -343,6 +418,9 @@
           "fx_observation_label": "2025-01-01"
         }
       },
+      "first_name": "Rich",
+      "last_name": "Sumner",
+      "title": "president & ceo",
       "company": "Methanex Corporation",
       "symbol": "MX",
       "fiscal_end": "2025-12-31",
@@ -677,6 +755,9 @@
           "fx_observation_label": "2025-01-01"
         }
       },
+      "first_name": "Clive",
+      "last_name": "Johnson",
+      "title": "director, president and ceo",
       "company": "B2Gold Corp.",
       "symbol": "BTO",
       "fiscal_end": "2025-12-31",
@@ -1017,6 +1098,9 @@
           "fx_observation_label": "2025-01-01"
         }
       },
+      "first_name": "Gustavo",
+      "last_name": "Parra",
+      "title": "senior vp, manufacturing",
       "company": "Methanex Corporation",
       "symbol": "MX",
       "fiscal_end": "2025-12-31",
@@ -1351,6 +1435,9 @@
           "fx_observation_label": "2025-01-01"
         }
       },
+      "first_name": "Michael",
+      "last_name": "Cinnamond",
+      "title": "senior vice president, finance and cfo",
       "company": "B2Gold Corp.",
       "symbol": "BTO",
       "fiscal_end": "2025-12-31",
@@ -1685,6 +1772,9 @@
           "fx_observation_label": "2025-01-01"
         }
       },
+      "first_name": "William",
+      "last_name": "Lytle",
+      "title": "senior vice president, operations and coo",
       "company": "B2Gold Corp.",
       "symbol": "BTO",
       "fiscal_end": "2025-12-31",
@@ -2019,6 +2109,9 @@
           "fx_observation_label": "2025-01-01"
         }
       },
+      "first_name": "Randall",
+      "last_name": "Chatwin",
+      "title": "senior vice president, legal and corporate communications",
       "company": "B2Gold Corp.",
       "symbol": "BTO",
       "fiscal_end": "2025-12-31",
@@ -2359,6 +2452,9 @@
           "fx_observation_label": null
         }
       },
+      "first_name": "Ian M.",
+      "last_name": "Fillinger",
+      "title": "president & chief executive officer",
       "company": "Interfor Corporation",
       "symbol": "IFP",
       "fiscal_end": "2025-12-31",
@@ -2699,6 +2795,9 @@
           "fx_observation_label": "2025-01-01"
         }
       },
+      "first_name": "Dean",
+      "last_name": "Richardson",
+      "title": "senior vp, finance & cfo",
       "company": "Methanex Corporation",
       "symbol": "MX",
       "fiscal_end": "2025-12-31",
@@ -3033,6 +3132,9 @@
           "fx_observation_label": "2025-01-01"
         }
       },
+      "first_name": "Victor",
+      "last_name": "King",
+      "title": "senior vice president, exploration",
       "company": "B2Gold Corp.",
       "symbol": "BTO",
       "fiscal_end": "2025-12-31",
@@ -3373,6 +3475,9 @@
           "fx_observation_label": "2025-01-01"
         }
       },
+      "first_name": "Karine",
+      "last_name": "Delbarre",
+      "title": "senior vp, global marketing & logistics",
       "company": "Methanex Corporation",
       "symbol": "MX",
       "fiscal_end": "2025-12-31",
@@ -3713,6 +3818,9 @@
           "fx_observation_label": "2025-01-01"
         }
       },
+      "first_name": "Kevin",
+      "last_name": "Maloney",
+      "title": "senior vp, corporate development",
       "company": "Methanex Corporation",
       "symbol": "MX",
       "fiscal_end": "2025-12-31",
@@ -4053,6 +4161,9 @@
           "fx_observation_label": null
         }
       },
+      "first_name": "S. Bruce",
+      "last_name": "Luxmoore",
+      "title": "executive vice president, u.s. operations (former)",
       "company": "Interfor Corporation",
       "symbol": "IFP",
       "fiscal_end": "2025-12-31",
@@ -4393,6 +4504,9 @@
           "fx_observation_label": null
         }
       },
+      "first_name": "Richard A.",
+      "last_name": "Pozzebon",
+      "title": "executive vice president & chief financial officer (former)",
       "company": "Interfor Corporation",
       "symbol": "IFP",
       "fiscal_end": "2025-12-31",
@@ -4733,6 +4847,9 @@
           "fx_observation_label": null
         }
       },
+      "first_name": "Timothy P.",
+      "last_name": "Hartnett",
+      "title": "senior vice president, human resources",
       "company": "Interfor Corporation",
       "symbol": "IFP",
       "fiscal_end": "2025-12-31",
@@ -5073,6 +5190,9 @@
           "fx_observation_label": null
         }
       },
+      "first_name": "Andrew L.",
+      "last_name": "Horahan",
+      "title": "executive vice president & chief operating officer",
       "company": "Interfor Corporation",
       "symbol": "IFP",
       "fiscal_end": "2025-12-31",
@@ -5413,6 +5533,9 @@
           "fx_observation_label": null
         }
       },
+      "first_name": "Michael C.",
+      "last_name": "Mackay",
+      "title": "executive vice president & chief financial officer",
       "company": "Interfor Corporation",
       "symbol": "IFP",
       "fiscal_end": "2025-12-31",

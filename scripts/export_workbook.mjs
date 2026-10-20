@@ -1,17 +1,19 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
-import {Workbook,SpreadsheetFile} from '@oai/artifact-tool';
+import {Workbook,SpreadsheetFile,FileBlob} from '@oai/artifact-tool';
 
 const input=path.resolve(process.argv[2]||'outputs/pilot/records.json');
 const dir=path.dirname(input), data=JSON.parse(await fs.readFile(input,'utf8'));
-const workbookName=data.run.workbook_filename||'compensation_annual_average.xlsx';
+const workbookName=data.run.workbook_filename||'execs_comp.xlsx';
+const template=await SpreadsheetFile.importXlsx(await FileBlob.load(path.resolve('data/templates/execs_comp_template.xlsx')));
+const templateHeaders=template.worksheets.getItemAt(0).getRange('A1:AJ1').values[0];
+assert.equal(templateHeaders[0],'First Name'); assert.equal(templateHeaders[32],'Total comp CAD upload 2025');
 const wb=Workbook.create();
 const results=wb.worksheets.add('Results'), source=wb.worksheets.add('Source data');
-const ink='#182D47', muted='#52657A', pale='#EFF3F8', numberFormat='#,##0;(#,##0);0';
-const missing='Needs manual input';
-const fields=['total','salary','net_income','share_awards','option_awards','annual_incentive','long_term_incentive','pension','other'];
-const names=['Reported total (CAD)','Salary (CAD)','Company net income (CAD)','Share awards (CAD)','Option awards (CAD)','Annual incentives (CAD)','Long-term incentives (CAD)','Pension value (CAD)','Other compensation (CAD)'];
+const ink='#182D47', muted='#52657A', numberFormat='#,##0;(#,##0);0';
+const missing='';
+const fields=['total','salary','share_awards','option_awards','annual_incentive','long_term_incentive','pension','other'];
 function base(sheet,last,cols){
  sheet.showGridLines=false;
  sheet.getRangeByIndexes(0,0,last,cols).format.font={name:'Arial',size:10,color:ink};
@@ -22,7 +24,6 @@ function base(sheet,last,cols){
 function header(sheet,address){
  sheet.getRange(address).format={fill:ink,font:{name:'Arial',size:10,bold:true,color:'#FFFFFF'},wrapText:true,horizontalAlignment:'center',verticalAlignment:'center',rowHeight:42};
 }
-function warning(range){range.conditionalFormats.add('containsText',{text:missing,format:{fill:'#FFF0CF',font:{color:'#8A4B00'}}});}
 function literal(v){return typeof v==='string'&&/^[=+@]/.test(v)?"'"+v:v;}
 function date(value){return value?new Date(value+'T12:00:00Z'):null;}
 const sourceRows=[], index=new Map();
@@ -30,8 +31,8 @@ for(const r of data.records){
  for(const field of fields){
   const v=r.fields[field], e=v.evidence||{}, row=sourceRows.length+6;
   index.set(r.record_id+'|'+field,row);
-  sourceRows.push([r.record_id,r.company,r.executive,date(r.fiscal_end),field,v.source_label||'(not separately disclosed)',v.raw??'(blank)',
-   v.amount===null?missing:Number(v.amount),v.currency||missing,v.units??missing,v.applied_rate===null?missing:Number(v.applied_rate),null,
+  sourceRows.push([r.record_id,r.company,r.executive,date(r.fiscal_end),field,v.source_label||null,v.raw??null,
+   v.amount===null?null:Number(v.amount),v.currency||null,v.units??null,v.applied_rate===null?null:Number(v.applied_rate),null,
    v.status,v.converted_from_usd?'Yes':'No',v.fx_period?Number(v.fx_period):null,v.fx_url||'',date(e.document_date),e.table_heading||'',e.page||e.locator||missing,e.filename||'',
    e.document_url||'',e.sha256||'',v.footnote_reference||'',v.mapping||'',v.reason||'']);
  }
@@ -50,7 +51,6 @@ if(sourceRows.length){
  source.getRange(`L6:L${sourceRows.length+5}`).format.numberFormat=numberFormat;
  source.getRange(`K6:K${sourceRows.length+5}`).format.numberFormat='0.0000';
  source.getRange(`H6:K${sourceRows.length+5}`).format.font.color='#1749A0';
- warning(source.getRange(`H6:L${sourceRows.length+5}`));
 }
 const sourceWidths=[24,27,26,14,22,42,22,20,12,18,16,22,20,19,18,85,16,40,18,40,100,72,100,100,70];
 sourceWidths.forEach((width,c)=>source.getRangeByIndexes(0,c,Math.max(8,sourceRows.length+6),1).format.columnWidth=width);
@@ -82,58 +82,66 @@ source.getRange(`AB1:AC${Math.max(6,evidenceRows.length+5)}`).format.columnWidth
 source.getRange(`AD1:AD${Math.max(6,evidenceRows.length+5)}`).format.columnWidth=165;
 source.freezePanes.freezeRows(5); source.freezePanes.freezeColumns(3);
 
-base(results,data.records.length+8,19);
-results.getRange('A2').values=[[`Executive compensation for fiscal years ending in ${data.run.target_year}`]];
-results.getRange('A2').format.font={name:'Arial',size:14,bold:true,color:ink};
-results.getRange('A3').values=[['Full dollars CAD. Rank covers the supplied company/executive universe. Amber cells require manual input; verified totals remain ranked.']];
-results.getRange('A3').format.font={italic:true,color:muted};
-results.getRange('A4').values=[[`USD annual average (${data.run.target_year}): ${data.run.fx?.rate||missing} CAD per USD. Already reported CAD amounts are retained.`]];
-results.getRange('A4').format.font={italic:true,color:muted};
-results.getRange('A6:S6').values=[['Rank','Company','Executive','Fiscal year end',...names,'Reported position','Review status','Reconciliation','Reported minus known components (original currency)','Source ID','Record ID']];
-header(results,'A6:S6');
-const resultRows=data.records.map(r=>[r.rank??'',r.company,r.executive,date(r.fiscal_end),...fields.map(()=>null),r.position,r.status,r.reconciliation.status,r.reconciliation.reported_minus_known===null?missing:Number(r.reconciliation.reported_minus_known),r.source_id,r.record_id]);
-if(resultRows.length){
- results.getRange(`A7:S${resultRows.length+6}`).values=resultRows.map(row=>row.map(literal));
- for(let i=0;i<data.records.length;i++){
-  const r=data.records[i], row=i+7;
-  for(let j=0;j<fields.length;j++)results.getCell(row-1,j+4).formulas=[[`='Source data'!L${index.get(r.record_id+'|'+fields[j])}`]];
-  results.getRange(`A${row}`).formulas=[[`=IF(ISNUMBER(E${row}),RANK(E${row},$E$7:$E$${resultRows.length+6},0),"")`]];
-  if(i%2===1)results.getRange(`A${row}:S${row}`).format.fill=pale;
- }
- results.getRange(`D7:D${resultRows.length+6}`).format.numberFormat='yyyy-mm-dd';
- results.getRange(`E7:M${resultRows.length+6}`).format.numberFormat=numberFormat;
- results.getRange(`Q7:Q${resultRows.length+6}`).format.numberFormat='#,##0.00;(#,##0.00);0.00';
- results.getRange(`E7:E${resultRows.length+6}`).format.font.bold=true;
- warning(results.getRange(`E7:M${resultRows.length+6}`));
+const mapping=data.run.template.mapping, last=data.records.length+1;
+base(results,last+1,41);
+const headers=templateHeaders.map(v=>String(v).replace(/2025|2024/g,y=>String(data.run.target_year-(y==='2024'?1:0))));
+results.getRange('A1:AO1').values=[[...headers,'Rank',`Long-term incentives ${data.run.target_year} USD`,`Long-term incentives ${data.run.target_year} CDN$:`, 'Fiscal year end','Review notes']];
+results.getRange('A1:AO1').format={font:{name:'Arial',size:10,bold:true,color:'#000000'},fill:'#FFFFFF',wrapText:true,rowHeight:60,verticalAlignment:'center',borders:{bottom:{style:'thin',color:'#000000'}}};
+results.getRange(`A2:AO${Math.max(2,last)}`).format.rowHeight=36;
+results.getRange('A1:AO1').format.columnWidth=21;
+results.getRange(`A2:AO${Math.max(2,last)}`).format.font.color='#000000';
+for(const m of mapping.fields){
+ results.getRange(`${m.cad}1:${m.cad}${Math.max(2,last)}`).format.columnWidth=29;
+ results.getRange(`${m.usd}1:${m.usd}${Math.max(2,last)}`).format.columnWidth=22;
 }
-const widths=[8,28,27,18,22,20,25,22,22,23,25,22,23,63,48,20,36,24,25];
-widths.forEach((w,c)=>results.getRangeByIndexes(0,c,resultRows.length+8,1).format.columnWidth=w);
-results.freezePanes.freezeRows(6); results.freezePanes.freezeColumns(3);
+for(const [col,width] of [['A',20],['B',21],['E',30],['F',60],['AJ',12],['AK',9],['AO',55]])results.getRange(`${col}1:${col}${Math.max(2,last)}`).format.columnWidth=width;
+for(const col of ['F','AO'])results.getRange(`${col}2:${col}${Math.max(2,last)}`).format.wrapText=true;
+source.getRange('A4').values=[[`Bank of Canada ${data.run.target_year} annual average: ${data.run.fx?.rate||''} CAD per USD. Missing amounts display blank; reasons remain in this sheet.`]];
+for(let i=0;i<data.records.length;i++){
+ const r=data.records[i],row=i+2;
+ for(const [col,value] of [['A',r.first_name],['B',r.last_name],['E',r.company],['F',r.title],['AJ',r.symbol],['AN',date(r.fiscal_end)],['AO',r.status]])results.getRange(`${col}${row}`).values=[[literal(value)]];
+ for(const m of mapping.fields){
+  const v=r.fields[m.field],s=index.get(r.record_id+'|'+m.field);
+  results.getRange(`${m.cad}${row}`).formulas=[[`='Source data'!L${s}`]];
+  results.getRange(`${m.cad}${row}`).format.numberFormat=numberFormat;
+  if(v.currency==='USD'&&v.amount!==null){
+   results.getRange(`${m.usd}${row}`).formulas=[[`='Source data'!H${s}*'Source data'!J${s}`]];
+   results.getRange(`${m.usd}${row}`).format.numberFormat=numberFormat;
+  }
+ }
+ results.getRange(`AK${row}`).formulas=[[`=IF(ISNUMBER(AG${row}),RANK(AG${row},$AG$2:$AG$${last},0),"")`]];
+}
+results.getRange(`AN2:AN${Math.max(2,last)}`).format.numberFormat='yyyy-mm-dd';
+results.getRange(`AG2:AG${Math.max(2,last)}`).format.font.bold=true;
+results.freezePanes.freezeRows(1); results.freezePanes.freezeColumns(2);
 wb.recalculate();
 // Verify every exported financial amount and rank against the Decimal-based pipeline.
 for(let i=0;i<data.records.length;i++){
- const r=data.records[i],row=i+7;
- for(let j=0;j<fields.length;j++){
-  const actual=results.getCell(row-1,j+4).values[0][0],expected=r.fields[fields[j]].cad;
+ const r=data.records[i],row=i+2;
+ for(const m of mapping.fields){
+  const actual=results.getRange(`${m.cad}${row}`).values[0][0],expected=r.fields[m.field].cad;
   if(expected===null)assert.equal(actual,missing);
-  else assert.ok(Math.abs(Number(actual)-Number(expected))<0.00001,`${r.executive} ${fields[j]}: ${actual} vs ${expected}`);
+  else assert.ok(Math.abs(Number(actual)-Number(expected))<0.00001,`${r.executive} ${m.field}: ${actual} vs ${expected}`);
  }
- assert.equal(results.getRange(`A${row}`).values[0][0],r.rank??'');
+ assert.equal(results.getRange(`AK${row}`).values[0][0],r.rank??'');
 }
 // Input perturbation proves conversion formulas update; restore before delivery.
-if(sourceRows.length){
- const old=source.getRange('K6').values[0][0], before=source.getRange('L6').values[0][0];
- if(typeof old==='number'&&typeof before==='number'){
-  source.getRange('K6').values=[[old*2]]; wb.recalculate();
-  assert.ok(Math.abs(source.getRange('L6').values[0][0]-before*2)<0.00001);
-  source.getRange('K6').values=[[old]];
- }
+const perturbIndex=sourceRows.findIndex(r=>r[8]==='USD'&&typeof r[7]==='number');
+if(perturbIndex>=0){
+ const row=perturbIndex+6,rateCell=`K${row}`,valueCell=`H${row}`,cadCell=`L${row}`;
+ const oldRate=source.getRange(rateCell).values[0][0],oldAmount=source.getRange(valueCell).values[0][0],before=source.getRange(cadCell).values[0][0];
+ source.getRange(rateCell).values=[[oldRate*2]];wb.recalculate();
+ assert.ok(Math.abs(source.getRange(cadCell).values[0][0]-before*2)<0.00001);
+ source.getRange(rateCell).values=[[oldRate]];
+ source.getRange(valueCell).values=[[0]];wb.recalculate();assert.equal(source.getRange(cadCell).values[0][0],0);
+ source.getRange(valueCell).values=[[null]];wb.recalculate();assert.equal(source.getRange(cadCell).values[0][0],'');
+ source.getRange(valueCell).values=[[oldAmount]];
 }
 wb.recalculate();
 const errors=await wb.inspect({kind:'match',searchTerm:'#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!|#SPILL!|#CALC!',options:{useRegex:true,maxResults:20},summary:'Final formula error scan'});
 await fs.mkdir(path.join(dir,'previews'),{recursive:true});
-await fs.writeFile(path.join(dir,'workbook_validation.json'),JSON.stringify({checked_records:data.records.length,checked_monetary_cells:data.records.length*fields.length,input_perturbation:'passed',formula_scan:errors.ndjson},null,2));
-for(const [name,sheetName,range] of [['results','Results',`A1:G${Math.max(8,resultRows.length+6)}`],['results_components','Results','H6:P13'],['source_values','Source data','E5:M14'],['source_evidence','Source data','AA5:AD17'],['source_citations','Source data','Q5:U9']]){
+await fs.writeFile(path.join(dir,'workbook_validation.json'),JSON.stringify({checked_records:data.records.length,checked_monetary_cells:data.records.length*fields.length,input_perturbation:'USD rate, zero and blank checks passed; restored',formula_scan:errors.ndjson},null,2));
+for(const [name,sheetName,range] of [['results','Results','A1:G10'],['results_components','Results','H1:S8'],['results_totals','Results','AB1:AO8'],['source_values','Source data','E5:M14'],['source_evidence','Source data','AA5:AD17'],['source_citations','Source data','Q5:U9']]){
  const image=await wb.render({sheetName,range,scale:1.5,format:'png'});
  await fs.writeFile(path.join(dir,'previews',name+'.png'),new Uint8Array(await image.arrayBuffer()));
 }

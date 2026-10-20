@@ -2,7 +2,7 @@ import json, hashlib
 from pathlib import Path
 from decimal import Decimal
 from .config import RunConfig
-from .inputs import load_companies, match_executive
+from .inputs import load_companies, match_executive, output_identity
 from .documents import acquire, discover, fetch
 from .extraction import pdf_evidence, extract_compensation, extract_net_income, html_evidence, extract_html_compensation
 from .currency import cad, select_rate, load_snapshot, annual_rate_url
@@ -77,6 +77,7 @@ def run(root, input_path, output_dir, config=None, profile_dir=None, fx_path=Non
                         name=match_executive(request,[r['executive'] for r in parsed]); selected.append(next(r for r in parsed if r['executive']==name))
                     except ValueError as exc: issues.append({'scope':scope+' / '+request,'reason':str(exc)})
             for record in selected:
+                record.update(output_identity(record['executive'],record['position']))
                 record.update(company=scope,symbol=company['symbol'],fiscal_end=profile['fiscal_end'],source_id=profile_name)
                 record['record_id']=hashlib.sha256(f'{scope}|{record["executive"]}|{profile["fiscal_end"]}'.encode()).hexdigest()[:20]
                 record['fields']['net_income']=dict(net)
@@ -103,7 +104,8 @@ def run(root, input_path, output_dir, config=None, profile_dir=None, fx_path=Non
     records=rank_records(records)
     result={'schema_version':'1.0','run':{'target_year':config.target_year,'started_local':config.started_local,
         'method':'Deterministic PDF word coordinates and explicit reviewed layout profiles; no generative extraction.',
-        'fx':fx,'ranking':'Descending confirmed CAD reported totals; competition ranks for ties; unavailable totals unranked.'},
+        'fx':fx,'fx_policy':'Bank of Canada FXAUSDCAD annual average for local run calendar year minus one; no daily or prior-year fallback.',
+        'ranking':'Descending confirmed CAD reported totals; competition ranks for ties; unavailable totals unranked.'},
         'records':records,'sources':contexts,'unresolved':issues,'discovery_candidates':candidates}
     json_write(output/'records.json',result)
     lines=[f'# Run report: fiscal years ending in {config.target_year}',f'\nStarted locally: {config.started_local}',

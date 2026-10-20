@@ -1,6 +1,6 @@
 # Run report: fiscal years ending in 2025
 
-Started locally: 2026-10-20T14:29:57.564827-07:00
+Started locally: 2026-10-20T14:38:08.694798-07:00
 
 Collected 16 executive records across 3 companies.
 Ranked 16 confirmed totals. 40 unresolved field or collection items.
@@ -60,7 +60,7 @@ Reconciliation is incomplete when any source component is nonnumeric. The diagno
 - New issuers, later years, ambiguous identity matches, restricted sites and unsupported currencies require reviewed inputs. No placeholder rows count as successful collection.
 - Re-run the pipeline to refresh ranking/order after changing source inputs. Workbook formulas show conversions; it is a run snapshot.
 
-Current workbook: compensation_annual_average.xlsx
+Current workbook: execs_comp.xlsx
 
 ## Workbook verification
 Workbook renderer returned Windows shutdown status 3221226505 after export; independent saved-file checks passed.

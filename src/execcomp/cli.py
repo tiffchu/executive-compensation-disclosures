@@ -10,7 +10,7 @@ def main():
     sub=parser.add_subparsers(dest='command',required=True)
     collect=sub.add_parser('run'); collect.add_argument('--input',default='inputs/pilot.csv'); collect.add_argument('--output',default='outputs/pilot'); collect.add_argument('--no-excel',action='store_true')
     collect.add_argument('--profile-dir'); collect.add_argument('--fx-file')
-    collect.add_argument('--workbook-name',default='compensation_annual_average.xlsx')
+    collect.add_argument('--workbook-name',default='execs_comp.xlsx')
     discovery=sub.add_parser('discover'); discovery.add_argument('ir_url'); discovery.add_argument('--year',type=int,required=True)
     html=sub.add_parser('inspect-html'); html.add_argument('path')
     args=parser.parse_args()
@@ -19,6 +19,12 @@ def main():
     result=run(ROOT,ROOT/args.input,ROOT/args.output,profile_dir=args.profile_dir,fx_path=args.fx_file)
     if Path(args.workbook_name).name!=args.workbook_name or not args.workbook_name.endswith('.xlsx'): parser.error('--workbook-name must be an XLSX filename')
     result['run']['workbook_filename']=args.workbook_name
+    template=ROOT/'data/templates/execs_comp_template.xlsx'
+    import hashlib
+    result['run']['template']={'path':str(template.relative_to(ROOT)),'sha256':hashlib.sha256(template.read_bytes()).hexdigest()}
+    mapping=json.loads((ROOT/'config/output_template.json').read_text())
+    if mapping['template_sha256']!=result['run']['template']['sha256']: raise ValueError('Output template changed; review its column mapping')
+    result['run']['template']['mapping']=mapping
     (ROOT/args.output/'records.json').write_text(json.dumps(result,indent=2,ensure_ascii=False),encoding='utf-8')
     if not args.no_excel:
         bundled=Path.home()/'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe'

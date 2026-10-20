@@ -4,6 +4,11 @@ from collections import OrderedDict
 def identity(name):
     return re.sub(r'[^a-z0-9]', '', unicodedata.normalize('NFKD', name).casefold())
 
+def output_identity(name, position):
+    parts=name.strip().rsplit(None,1)
+    if len(parts)!=2: return {'first_name':name.strip(),'last_name':None,'title':re.sub(r'\(\d+\)','',position).lower().strip()}
+    return {'first_name':parts[0],'last_name':parts[1],'title':re.sub(r'\(\d+\)','',position).lower().strip()}
+
 def match_executive(requested, names):
     matches = [n for n in names if identity(n) == identity(requested)]
     if len(matches) != 1:

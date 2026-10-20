@@ -21,14 +21,24 @@ def verify_saved_workbook(path, result):
         tree,cells=sheet('xl/worksheets/sheet1.xml')
         titles=[t.get('name') for t in ET.fromstring(archive.read('xl/workbook.xml')).findall('s:sheets/s:sheet',NS)]
         assert titles==['Results','Source data'],titles
-        fields=['total','salary','net_income','share_awards','option_awards','annual_incentive','long_term_incentive','pension','other']
-        for row,r in enumerate(result['records'],7):
-            for col,field in zip('EFGHIJKLM',fields):
+        mapping=result['run']['template']['mapping']; usd_checked=0
+        for row,r in enumerate(result['records'],2):
+            for spec in mapping['fields']:
+                col=spec['cad'];field=spec['field']
                 raw,formula,kind=cells[f'{col}{row}']; expected=r['fields'][field]['cad']
                 assert formula is not None,(row,field,'Missing conversion link')
-                if expected is None: assert raw=='Needs manual input',(row,field,raw)
+                if expected is None: assert raw in (None,''),(row,field,raw)
                 else: assert abs(Decimal(raw)-Decimal(expected))<Decimal('0.00001'),(row,field,raw,expected)
-            rank=cells[f'A{row}'][0]
+                usd=cells.get(f'{spec["usd"]}{row}',(None,None,None))[0];v=r['fields'][field]
+                if v['currency']=='USD' and v['amount'] is not None:
+                    assert abs(Decimal(usd)-Decimal(v['amount'])*v['units'])<Decimal('0.00001'),(row,field,'Original USD differs')
+                    usd_checked+=1
+                else: assert usd in (None,''),(row,field,'USD value inferred from non-USD source')
+            for col,key in [('A','first_name'),('B','last_name'),('E','company'),('F','title'),('AJ','symbol')]:
+                assert cells.get(f'{col}{row}',(None,None,None))[0]==r[key],(row,key)
+            assert r['title']==r['title'].lower(),(row,'Title case')
+            for col in mapping['blank_columns']: assert cells.get(f'{col}{row}',(None,None,None))[0] in (None,''),(row,col,'Ignored/prior-year cell populated')
+            rank=cells[f'AK{row}'][0]
             assert rank==str(r['rank']) if r['rank'] is not None else rank in (None,''),(row,rank,r['rank'])
         errors=[(addr,value[0]) for addr,value in cells.items() if value[2]=='e']
         assert not errors,errors
@@ -36,4 +46,6 @@ def verify_saved_workbook(path, result):
         _,source=sheet('xl/worksheets/sheet2.xml')
         for addr,(raw,formula,kind) in source.items():
             assert kind!='e',(addr,raw)
-        return {'saved_xlsx_checked':str(Path(path).name),'sheets':titles,'monetary_cells_checked':len(result['records'])*9,'formula_errors':0}
+        return {'saved_xlsx_checked':str(Path(path).name),'sheets':titles,'cad_cells_checked':len(result['records'])*8,
+            'original_usd_cells_checked':usd_checked,'blank_columns_checked':len(mapping['blank_columns']),
+            'identity_and_lowercase_titles':'verified','formula_errors':0}
