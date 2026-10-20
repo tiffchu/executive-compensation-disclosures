@@ -6,7 +6,7 @@ Collect original executive compensation disclosures without estimates or generat
 
 `outputs/pilot/` contains the workbook, JSON records, unresolved-item report and saved-workbook verification. The run covers fiscal years ending in **2025**, resolved from the local run date in 2026.
 
-The current workbook is **`execs_comp.xlsx`**, using the supplied `execs_comp_template.xlsx` layout and the annual-average FX policy. Earlier workbooks are retained as historical outputs; the current JSON and run report describe `execs_comp.xlsx`. The template is preserved unchanged in `data/templates/`, pinned by SHA256 in `config/output_template.json` and the run metadata. Its example figures and hardcoded conversion formulas are not factual inputs.
+The current workbook is **`execs_comp.xlsx`**, using the supplied `execs_comp_template.xlsx` layout and the annual-average FX policy. The current JSON and run report describe this workbook. Superseded outputs are recoverable from Git history. The template is preserved unchanged in `data/templates/`, pinned by SHA256 in `config/output_template.json` and the run metadata. Its example figures and hardcoded conversion formulas are not factual inputs.
 
 | Company | Executives | Compensation source | Audited income source |
 | --- | ---: | --- | --- |
@@ -102,7 +102,13 @@ JSON monetary amounts are decimal strings to avoid binary floating-point loss. U
 
 Reported totals are copied independently. Award values remain as disclosed. No new option valuation, realized/vested substitution, compensation-actually-paid substitution or annualization is performed. Net income is separately sourced from the audited consolidated income statement, includes NCI, and excludes comprehensive income, adjusted earnings and owners-only subtotals. A missing income figure does not discard compensation.
 
-For USD, use the Bank of Canada FXAUSDCAD annual average for the target calendar year, including non-calendar fiscal issuers. The official response is cached as `data/documents/fx_annual_<year>.json`, with its source URL and hash. A missing response triggers retrieval; a missing target-year annual rate requires manual input, without falling back to a daily rate or another year. Annual period, series label, basis and URLs are recorded explicitly. The old daily snapshot is retained only as historical evidence. Unsupported currencies/rates remain for manual input. CAD is never converted again.
+For USD, use the Bank of Canada FXAUSDCAD annual average for the target calendar year, including non-calendar fiscal issuers. The official response is cached as `data/documents/fx_annual_<year>.json`, with its source URL and hash. A missing response triggers retrieval; a missing target-year annual rate requires manual input, without falling back to a daily rate or another year. Annual period, series label, basis and URLs are recorded explicitly. Unsupported currencies/rates remain for manual input. CAD is never converted again.
+
+## Repository contents
+
+Keep `src/`, `scripts/`, `tests/`, `config/` and `inputs/` for implementation and reproducibility. `data/documents/` retains original disclosures, official annual FX evidence, source metadata and the AGM discovery page; `data/reference/` and `data/templates/` retain the unchanged user references. `outputs/pilot/` contains the current workbook, JSON, run report and verification records.
+
+PDF parsing caches (`data/extracted/`), Python bytecode, workbook previews and renderer inspection dumps are generated scratch files, ignored by Git and safe to remove. They are recreated as needed. The local `node_modules` junction is retained because workbook generation uses the managed artifact-tool runtime; it is ignored by Git and its external target must not be deleted during cleanup. Excel's active `~$` lock files are also ignored and left to Excel.
 
 ## Modules and validation
 

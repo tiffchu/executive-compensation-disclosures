@@ -2,7 +2,7 @@
 
 Verified on October 20, 2026, local America/Los_Angeles date.
 
-Current workbook: `execs_comp.xlsx`, built from the supplied template's column layout. Earlier workbooks are historical outputs. The 16-executive pilot was regenerated from the same original disclosures, with source amounts preserved and USD values converted using the official annual average.
+Current workbook: `execs_comp.xlsx`, built from the supplied template's column layout. Superseded workbooks are recoverable from Git history. The 16-executive pilot was regenerated from the same original disclosures, with source amounts preserved and USD values converted using the official annual average.
 
 - 47 Python tests passed. Annual FX uses CURRENT YEAR - 1 at local run start. A 2027-date test selects the 2026 annual average and refuses a 2025 fallback. The 2026 pilot therefore uses the official 2025 annual average, 1.3978 CAD per USD, with its official response/hash retained.
 - Original Summary Compensation Tables were rendered and visually checked: Interfor PDF page 54, Methanex page 89 and B2Gold page 77. All target-year rows were included: 6, 5 and 5 NEOs respectively. Interfor's two former officers were retained.
