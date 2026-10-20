@@ -1,0 +1,4 @@
+company,symbol,ir_url,document,financial_document,executive,profile
+Interfor Corporation,IFP,https://interfor.com/investors/reports/,data/documents/interfor_circular.pdf,data/documents/interfor_financials.pdf,,interfor
+Methanex Corporation,MX,https://www.methanex.com/investor-relations/,data/documents/methanex_circular.pdf,data/documents/methanex_financials.pdf,,methanex
+B2Gold Corp.,BTO,https://www.b2gold.com/investors/agm/default.aspx,data/documents/b2gold_circular.pdf,data/documents/b2gold_financials.pdf,,b2gold

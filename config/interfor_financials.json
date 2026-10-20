@@ -1,0 +1,16 @@
+{
+  "sha256": "e3daabf8a454e96497ca9fad711edf9a8580acbdef3fe1d574c3528fd97c3415",
+  "page": 8,
+  "units": 1000000,
+  "currency": "CAD",
+  "label": "Net loss",
+  "line_pattern": "^Net loss \\$ (?P<amount>\\([\\d,.]+\\)) \\$",
+  "guards": [
+    "Consolidated Statements of Earnings",
+    "millions of Canadian Dollars",
+    "December 31, 2025"
+  ],
+  "explanation": "Consolidated net loss after tax, before any owners/NCI allocation; not comprehensive income. Source millions expanded to dollars.",
+  "document_date": "2026-02-12",
+  "fiscal_end": "2025-12-31"
+}

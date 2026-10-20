@@ -1,0 +1,109 @@
+{
+  "sha256": "62f51d3625c51cfac54e4777b67a1bfbaa6e39bc401662ebdd3ed347167ab3ab",
+  "original_disclosure_reviewed": true,
+  "selection_note": "Original 2026 issuer circular for fiscal year ended December 31, 2025, obtained from issuer investor-relations archive; no amendment or later comparative substitution.",
+  "document_date": "2026-03-17",
+  "fiscal_end": "2025-12-31",
+  "table_page": 54,
+  "table_y": [
+    270,
+    596
+  ],
+  "year_x": 124.1,
+  "currency": "CAD",
+  "expected_rows": 6,
+  "guards": [
+    {
+      "page": 54,
+      "text": "SUMMARY COMPENSATION TABLE"
+    },
+    {
+      "page": 54,
+      "text": "December 31, 2025"
+    },
+    {
+      "page": 5,
+      "text": "all dollar amounts are in Canadian dollars"
+    }
+  ],
+  "footnote_reference": "PDF pp.54-55, SCT notes (1)-(9). Awards are grant-date fair values. Some US employees already translated to CAD by issuer; do not reconvert.",
+  "evidence_pages": [
+    5,
+    54,
+    55
+  ],
+  "columns": [
+    {
+      "field": "salary",
+      "label": "Salary",
+      "x": [
+        150,
+        195
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "share_awards",
+      "label": "Share Based Awards (1)(2)",
+      "x": [
+        195,
+        250
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "option_awards",
+      "label": "Option Based Awards",
+      "x": [
+        250,
+        290
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "annual_incentive",
+      "label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(3)",
+      "x": [
+        290,
+        335
+      ],
+      "mapping": "Annual short-term incentive heading; direct mapping, no long-term amounts combined."
+    },
+    {
+      "field": "long_term_incentive",
+      "label": "Non-Equity Incentive Plan Compensation - Long-term Incentive Plans",
+      "x": [
+        335,
+        385
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "pension",
+      "label": "Pension Value(4)",
+      "x": [
+        385,
+        440
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "other",
+      "label": "All Other Compensation(5)",
+      "x": [
+        440,
+        500
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "total",
+      "label": "Total Compensation(6)",
+      "x": [
+        500,
+        570
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "sha256": "8b8899e183155be75bbc51d96361220ced0cd44fd69fb05ee624e7d80d0779c2",
+  "page": 160,
+  "units": 1000,
+  "currency": "USD",
+  "label": "Net income (loss)",
+  "line_pattern": "^Net income \\(loss\\) \\$ (?P<amount>[\\d,]+) \\$",
+  "guards": [
+    "CONSOLIDATED STATEMENTS OF OPERATIONS",
+    "thousands of United States dollars",
+    "2025 2024"
+  ],
+  "explanation": "Consolidated net income including NCI, before allocation to shareholders. The same total is repeated after the attribution lines. Source thousands expanded to dollars.",
+  "document_date": "2026-02-18",
+  "fiscal_end": "2025-12-31"
+}

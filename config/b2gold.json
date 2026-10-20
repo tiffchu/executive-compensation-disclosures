@@ -1,0 +1,99 @@
+{
+  "sha256": "000bcea1d986585b3d261c785a369eb49859de5dd24837b9d487723021a0214c",
+  "original_disclosure_reviewed": true,
+  "selection_note": "Original 2026 issuer circular for fiscal year ended December 31, 2025, obtained from issuer investor-relations archive; no amendment or later comparative substitution.",
+  "document_date": "2026-04-13",
+  "fiscal_end": "2025-12-31",
+  "table_page": 77,
+  "table_y": [
+    215,
+    444
+  ],
+  "year_x": 170.6,
+  "currency": "USD",
+  "expected_rows": 5,
+  "guards": [
+    {
+      "page": 77,
+      "text": "Summary Compensation Table"
+    },
+    {
+      "page": 77,
+      "text": "year ended December 31, 2025"
+    },
+    {
+      "page": 19,
+      "text": "United States dollars"
+    }
+  ],
+  "footnote_reference": "PDF p.77, SCT notes (1)-(3); currency convention PDF p.19. Annual cash bonus paid March 2026 for services in FY2025. Share awards copied as reported.",
+  "evidence_pages": [
+    19,
+    77
+  ],
+  "columns": [
+    {
+      "field": "salary",
+      "label": "Salary ($)",
+      "x": [
+        198,
+        251
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "share_awards",
+      "label": "Share-Based Awards ($)(1)",
+      "x": [
+        251,
+        310
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "option_awards",
+      "label": "Option-Based Awards ($)",
+      "x": [
+        310,
+        350
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "annual_incentive",
+      "label": "Annual Incentive Program ($)(2)",
+      "x": [
+        350,
+        415
+      ],
+      "mapping": "Annual short-term incentive heading; direct mapping, no long-term amounts combined."
+    },
+    {
+      "field": "long_term_incentive",
+      "label": "Long-Term Incentive Plans ($)",
+      "x": [
+        415,
+        455
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "other",
+      "label": "All Other Compensation ($)(3)",
+      "x": [
+        455,
+        510
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "total",
+      "label": "Total Compensation ($)",
+      "x": [
+        510,
+        570
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    }
+  ]
+}

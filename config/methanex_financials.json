@@ -1,0 +1,16 @@
+{
+  "sha256": "af0ace8269d5a162fca748586c876a97e256619cb5012a8e6d3a4a9f7c2a311d",
+  "page": 53,
+  "units": 1000,
+  "currency": "USD",
+  "label": "Net income",
+  "line_pattern": "^Net income \\$ (?P<amount>[\\d,]+) \\$",
+  "guards": [
+    "Consolidated Statements of Income",
+    "thousands of U.S. dollars",
+    "2025 2024"
+  ],
+  "explanation": "Consolidated net income above the allocation to shareholders and non-controlling interests; includes NCI. Source thousands expanded to dollars.",
+  "document_date": "2026-03-05",
+  "fiscal_end": "2025-12-31"
+}
