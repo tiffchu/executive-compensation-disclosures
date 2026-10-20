@@ -37,9 +37,33 @@ def verify_saved_workbook(path, result):
             for col,key in [('A','first_name'),('B','last_name'),('E','company'),('F','title'),('AJ','symbol')]:
                 assert cells.get(f'{col}{row}',(None,None,None))[0]==r[key],(row,key)
             assert r['title']==r['title'].lower(),(row,'Title case')
-            for col in mapping['blank_columns']: assert cells.get(f'{col}{row}',(None,None,None))[0] in (None,''),(row,col,'Ignored/prior-year cell populated')
+            for col in mapping['blank_columns']: assert cells.get(f'{col}{row}',(None,None,None))[0] in (None,''),(row,col,'Ignored cell populated')
+            assert cells.get(f'AR{row}',(None,None,None))[0]==r['roster_status'],(row,'Roster status')
+            prior=r.get('prior_year',{}).get('fields',{}) if r['roster_status']=='new' else {}
+            for spec in mapping['fields']:
+                v=prior.get(spec['field'],{}); expected=v.get('cad')
+                raw=cells.get(f'{spec["prior_cad"]}{row}',(None,None,None))[0]
+                if expected is None: assert raw in (None,''),(row,spec['field'],'Unexpected prior CAD')
+                else: assert abs(Decimal(raw)-Decimal(expected))<Decimal('0.00001'),(row,spec['field'],'Prior CAD differs')
+                raw=cells.get(f'{spec["prior_usd"]}{row}',(None,None,None))[0]
+                if v.get('currency')=='USD' and v.get('amount') is not None:
+                    assert abs(Decimal(raw)-Decimal(v['amount'])*v['units'])<Decimal('0.00001')
+                    if v['cad'] is not None: assert v['fx_period']==str(result['run']['target_year']-1)
+                else: assert raw in (None,''),(row,spec['field'],'Unexpected prior USD')
             rank=cells[f'AK{row}'][0]
             assert rank==str(r['rank']) if r['rank'] is not None else rank in (None,''),(row,rank,r['rank'])
+        placeholders=result.get('removed_executives',[])+result.get('unverified_executives',[])
+        for row,r in enumerate(placeholders,len(result['records'])+2):
+            assert cells[f'A{row}'][0]==r['first_name'] and cells[f'B{row}'][0]==r['last_name']
+            assert cells[f'AR{row}'][0]==r['roster_status']
+            for col in ['AK']+[s[k] for s in mapping['fields'] for k in ['usd','cad','prior_usd','prior_cad']]:
+                assert cells.get(f'{col}{row}',(None,None,None))[0] in (None,''),(row,col,'Placeholder compensation/rank')
+        rules=tree.findall('.//s:conditionalFormatting/s:cfRule',NS)
+        red=next((r for r in rules if r.find('s:formula',NS) is not None and r.find('s:formula',NS).text.lstrip('=')=='$AR2="removed"'),None)
+        assert red is not None,'Removal row conditional formatting missing'
+        styles=ET.fromstring(archive.read('xl/styles.xml'))
+        dxf=styles.findall('s:dxfs/s:dxf',NS)[int(red.get('dxfId'))]
+        assert any(c.get('rgb','').upper().endswith('FFC7CE') for c in list(dxf.findall('.//s:fgColor',NS))+list(dxf.findall('.//s:bgColor',NS))),'Removal fill must be red'
         errors=[(addr,value[0]) for addr,value in cells.items() if value[2]=='e']
         assert not errors,errors
         assert tree.find('.//s:pane',NS) is not None,'Frozen headers missing'
@@ -48,4 +72,5 @@ def verify_saved_workbook(path, result):
             assert kind!='e',(addr,raw)
         return {'saved_xlsx_checked':str(Path(path).name),'sheets':titles,'cad_cells_checked':len(result['records'])*8,
             'original_usd_cells_checked':usd_checked,'blank_columns_checked':len(mapping['blank_columns']),
-            'identity_and_lowercase_titles':'verified','formula_errors':0}
+            'prior_cad_cells_checked':len(result['records'])*8,'removed_rows_checked':len(result.get('removed_executives',[])),
+            'red_removal_rule':'verified','identity_and_lowercase_titles':'verified','formula_errors':0}

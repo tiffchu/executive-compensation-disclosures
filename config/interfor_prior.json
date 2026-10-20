@@ -1,0 +1,115 @@
+{
+  "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+  "original_disclosure_reviewed": true,
+  "selection_note": "Original 2025 issuer circular for fiscal year ended December 31, 2024, selected from official issuer reports archive; no later comparative substitution.",
+  "document_date": "2025-03-12",
+  "fiscal_end": "2024-12-31",
+  "table_page": 58,
+  "table_y": [
+    298,
+    552
+  ],
+  "year_x": 124.08,
+  "currency": "CAD",
+  "expected_rows": 5,
+  "guards": [
+    {
+      "page": 58,
+      "text": "SUMMARY COMPENSATION TABLE"
+    },
+    {
+      "page": 58,
+      "text": "December 31, 2024"
+    },
+    {
+      "page": 6,
+      "text": "all dollar amounts are in Canadian dollars"
+    },
+    {
+      "page": 1,
+      "text": "March 12, 2025"
+    }
+  ],
+  "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+  "evidence_pages": [
+    1,
+    6,
+    58
+  ],
+  "columns": [
+    {
+      "field": "salary",
+      "label": "Salary",
+      "x": [
+        150,
+        195
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "share_awards",
+      "label": "Share Based Awards (1)(2)",
+      "x": [
+        195,
+        250
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "option_awards",
+      "label": "Option Based Awards",
+      "x": [
+        250,
+        290
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "annual_incentive",
+      "label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(3)",
+      "x": [
+        290,
+        335
+      ],
+      "mapping": "Annual short-term incentive heading; direct mapping, no long-term amounts combined."
+    },
+    {
+      "field": "long_term_incentive",
+      "label": "Non-Equity Incentive Plan Compensation - Long-term Incentive Plans",
+      "x": [
+        335,
+        385
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "pension",
+      "label": "Pension Value(4)",
+      "x": [
+        385,
+        440
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "other",
+      "label": "All Other Compensation(5)",
+      "x": [
+        440,
+        500
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "total",
+      "label": "Total Compensation(6)",
+      "x": [
+        500,
+        570
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    }
+  ],
+  "full_roster_reviewed": true,
+  "document": "data/documents/interfor_circular_2025.pdf"
+}

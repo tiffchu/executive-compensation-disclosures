@@ -7,15 +7,19 @@ from .documents import acquire, discover, fetch
 from .extraction import pdf_evidence, extract_compensation, extract_net_income, html_evidence, extract_html_compensation
 from .currency import cad, select_rate, load_snapshot, annual_rate_url
 from .validation import reconcile, rank_records
+from .roster import read_baseline, classify, company_key
+from .prior import annual_snapshot, enrich_prior
 
 def json_write(path, obj):
     Path(path).write_text(json.dumps(obj,indent=2,ensure_ascii=False),encoding='utf-8')
 
-def run(root, input_path, output_dir, config=None, profile_dir=None, fx_path=None):
+def run(root, input_path, output_dir, config=None, profile_dir=None, fx_path=None, baseline_path=None, prior_fx_path=None):
     root=Path(root); output=Path(output_dir); output.mkdir(parents=True,exist_ok=True)
     config=config or RunConfig.start(); profiles=Path(profile_dir or root/'config')
     fx_path=Path(fx_path or root/'data/documents'/f'fx_annual_{config.target_year}.json')
-    issues=[]; records=[]; contexts=[]; candidates=[]
+    issues=[]; records=[]; contexts=[]; candidates=[]; verified=set()
+    companies=load_companies(input_path)
+    baseline,baseline_meta=read_baseline(baseline_path) if baseline_path else ([],None)
     try:
         if not fx_path.exists():
             url=annual_rate_url(config.target_year)
@@ -25,7 +29,7 @@ def run(root, input_path, output_dir, config=None, profile_dir=None, fx_path=Non
         fx=load_snapshot(fx_path,config.target_year)
     except (OSError, ValueError,KeyError) as exc:
         fx=None; issues.append({'scope':'FX','reason':str(exc)})
-    for company in load_companies(input_path):
+    for company in companies:
         scope=company['company']; profile_name=company.get('profile','')
         try:
             if not company.get('document'):
@@ -68,7 +72,7 @@ def run(root, input_path, output_dir, config=None, profile_dir=None, fx_path=Non
             except (OSError,ValueError,KeyError,IndexError) as exc:
                 issues.append({'scope':scope+' / net income','reason':str(exc)})
                 net={'amount':None,'raw':None,'status':'uncertain','reason':str(exc),'currency':None,'units':None,'source_label':None,'mapping':'Audited consolidated net income including NCI required.'}
-            if company['all_executives']:
+            if baseline_path or company['all_executives']:
                 selected=parsed
             else:
                 selected=[]
@@ -97,16 +101,27 @@ def run(root, input_path, output_dir, config=None, profile_dir=None, fx_path=Non
                         'reason':'Reported total minus known components is '+record['reconciliation']['reported_minus_known']+' '+profile['currency']+'. No source rounding tolerance assumed. Missing components remain unresolved.'})
                 record['status']='Verified total; component review required' if any(v['cad'] is None for v in record['fields'].values()) else 'Collected'
                 records.append(record)
+            if profile.get('full_roster_reviewed'): verified.add(company_key(scope))
         except (OSError,ValueError,KeyError,IndexError) as exc:
             issues.append({'scope':scope,'reason':str(exc)})
     keys=[r['record_id'] for r in records]
     if len(keys)!=len(set(keys)): raise ValueError('Duplicate company/executive/fiscal-year record')
     records=rank_records(records)
+    removed=[]; unverified=[]; excluded=0; prior_fx=None
+    if baseline_path:
+        removed,unverified,excluded=classify(records,baseline,companies,verified)
+        if any(r.get('roster_status')=='new' for r in records):
+            try: prior_fx=annual_snapshot(root,config.target_year-1,prior_fx_path)
+            except (OSError,ValueError,KeyError) as exc: issues.append({'scope':'Prior-year FX','reason':str(exc)})
+            enrich_prior(records,companies,root,profiles,config.target_year-1,prior_fx,contexts,issues)
     result={'schema_version':'1.0','run':{'target_year':config.target_year,'started_local':config.started_local,
         'method':'Deterministic PDF word coordinates and explicit reviewed layout profiles; no generative extraction.',
         'fx':fx,'fx_policy':'Bank of Canada FXAUSDCAD annual average for local run calendar year minus one; no daily or prior-year fallback.',
         'ranking':'Descending confirmed CAD reported totals; competition ranks for ties; unavailable totals unranked.'},
         'records':records,'sources':contexts,'unresolved':issues,'discovery_candidates':candidates}
+    result['run'].update(baseline=baseline_meta,prior_year=config.target_year-1,prior_fx=prior_fx,
+        baseline_rows_outside_input=excluded,roster_policy='Compare all disclosed executives in selected companies. Red means absent from a verified full roster, not employment termination.')
+    result.update(removed_executives=removed,unverified_executives=unverified)
     json_write(output/'records.json',result)
     lines=[f'# Run report: fiscal years ending in {config.target_year}',f'\nStarted locally: {config.started_local}',
         f'\nCollected {len(records)} executive records across {len(set(r["company"] for r in records))} companies.',
@@ -114,7 +129,12 @@ def run(root, input_path, output_dir, config=None, profile_dir=None, fx_path=Non
         f'\nUSD conversion: Bank of Canada annual average for {config.target_year}, '+(fx['rate']+' CAD per USD. Source: '+fx['url'] if fx else 'Needs manual input.'),
         '\nDashes remain null. Not applicable and not disclosed remain distinct. Missing components do not invalidate an independently verified total.',
         '\nReconciliation is incomplete when any source component is nonnumeric. The diagnostic sum of known components is not a reconstructed total.',
-        '\n## Unresolved items']
+        '\n## Roster comparison']
+    lines.extend([f'Roster: {sum(r.get("roster_status")=="new" for r in records)} new; {len(removed)} removed; {len(unverified)} unverified baseline rows; {excluded} baseline rows outside selected companies.',
+        f'Prior-year USD conversion uses the Bank of Canada annual average for {config.target_year-1}: '+(prior_fx['rate'] if prior_fx else 'unavailable')+'. Missing originals or amounts remain blank.',
+        f'{sum(bool(r.get("prior_year",{}).get("fields")) for r in records)} new executives have rows in reviewed original prior-year disclosures.',
+        'Red means absent from a successfully reviewed full compensation roster; it does not establish employment termination.',
+        '\n## Unresolved items'])
     lines.extend(f'- {i["scope"]}: {i["reason"]}' for i in issues)
     if not issues: lines.append('None.')
     lines.extend(['\n## Implementation limits','- Reviewed PDF adapters are provided for the three pilot circulars only, pinned to source hashes and 2025 fiscal ends.',

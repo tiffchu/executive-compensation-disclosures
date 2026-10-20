@@ -1,0 +1,441 @@
+{
+    "terms": {
+        "url": "https://www.bankofcanada.ca/terms/"
+    },
+    "groupDetail": {
+        "label": "Annual exchange rates",
+        "description": "Annual average exchange rates for various foreign currencies currently or historically published by the Bank of Canada, representing the value of one unit of foreign currency expressed in Canadian dollars. These rates are typically published on the last business day of each year by 12:30 (ET). All Bank of Canada exchange rates are indicative rates only, obtained from averages of aggregated price quotes from financial institutions.",
+        "link": "https://www.bankofcanada.ca/?p=195751",
+        "metadata": {
+            "unit": "Canadian dollars per foreign currency unit",
+            "frequency": "Annual"
+        }
+    },
+    "seriesDetail": {
+        "FXAAUDCAD": {
+            "label": "AUD/CAD",
+            "description": "Annual average exchange rate of the Australian dollar in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Australian dollar",
+                "frequency": "Annual"
+            }
+        },
+        "FXABRLCAD": {
+            "label": "BRL/CAD",
+            "description": "Annual average exchange rate of the Brazilian real in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Brazilian real",
+                "frequency": "Annual"
+            }
+        },
+        "FXACNYCAD": {
+            "label": "CNY/CAD",
+            "description": "Annual average exchange rate of the Chinese renminbi in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Chinese renminbi",
+                "frequency": "Annual"
+            }
+        },
+        "FXAEURCAD": {
+            "label": "EUR/CAD",
+            "description": "Annual average exchange rate of the euro in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per euro",
+                "frequency": "Annual"
+            }
+        },
+        "FXAHKDCAD": {
+            "label": "HKD/CAD",
+            "description": "Annual average exchange rate of the Hong Kong dollar in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Hong Kong dollar",
+                "frequency": "Annual"
+            }
+        },
+        "FXAINRCAD": {
+            "label": "INR/CAD",
+            "description": "Annual average exchange rate of the Indian rupee in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Indian rupee",
+                "frequency": "Annual"
+            }
+        },
+        "FXAIDRCAD": {
+            "label": "IDR/CAD",
+            "description": "Annual average exchange rate of the Indonesian rupiah in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Indonesian rupiah",
+                "frequency": "Annual"
+            }
+        },
+        "FXAJPYCAD": {
+            "label": "JPY/CAD",
+            "description": "Annual average exchange rate of the Japanese yen in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Japanese yen",
+                "frequency": "Annual"
+            }
+        },
+        "FXAMYRCAD": {
+            "label": "MYR/CAD",
+            "description": "Annual average exchange rate of the Malaysian ringgit in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Malaysian ringgit",
+                "frequency": "Annual"
+            }
+        },
+        "FXAMXNCAD": {
+            "label": "MXN/CAD",
+            "description": "Annual average exchange rate of the Mexican peso in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Mexican peso",
+                "frequency": "Annual"
+            }
+        },
+        "FXANZDCAD": {
+            "label": "NZD/CAD",
+            "description": "Annual average exchange rate of the New Zealand dollar in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per New Zealand dollar",
+                "frequency": "Annual"
+            }
+        },
+        "FXANOKCAD": {
+            "label": "NOK/CAD",
+            "description": "Annual average exchange rate of the Norwegian krone in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Norwegian krone",
+                "frequency": "Annual"
+            }
+        },
+        "FXAPENCAD": {
+            "label": "PEN/CAD",
+            "description": "Annual average exchange rate of the Peruvian new sol in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Peruvian new sol",
+                "frequency": "Annual"
+            }
+        },
+        "FXAPLNCAD": {
+            "label": "PLN/CAD",
+            "description": "Annual average exchange rate of the Polish zloty in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Polish zloty",
+                "frequency": "Annual"
+            }
+        },
+        "FXARUBCAD": {
+            "label": "RUB/CAD",
+            "description": "Annual average exchange rate — historical series of the Russian ruble in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Russian ruble",
+                "frequency": "Annual"
+            }
+        },
+        "FXASARCAD": {
+            "label": "SAR/CAD",
+            "description": "Annual average exchange rate — historical series of the Saudi riyal in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Saudi riyal",
+                "frequency": "Annual"
+            }
+        },
+        "FXASGDCAD": {
+            "label": "SGD/CAD",
+            "description": "Annual average exchange rate of the Singapore dollar in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Singapore dollar",
+                "frequency": "Annual"
+            }
+        },
+        "FXAZARCAD": {
+            "label": "ZAR/CAD",
+            "description": "Annual average exchange rate of the South African rand in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per South African rand",
+                "frequency": "Annual"
+            }
+        },
+        "FXAKRWCAD": {
+            "label": "KRW/CAD",
+            "description": "Annual average exchange rate of the South Korean won in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per South Korean won",
+                "frequency": "Annual"
+            }
+        },
+        "FXASEKCAD": {
+            "label": "SEK/CAD",
+            "description": "Annual average exchange rate of the Swedish krona in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Swedish krona",
+                "frequency": "Annual"
+            }
+        },
+        "FXACHFCAD": {
+            "label": "CHF/CAD",
+            "description": "Annual average exchange rate of the Swiss franc in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Swiss franc",
+                "frequency": "Annual"
+            }
+        },
+        "FXATWDCAD": {
+            "label": "TWD/CAD",
+            "description": "Annual average exchange rate of the Taiwanese dollar in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Taiwanese dollar",
+                "frequency": "Annual"
+            }
+        },
+        "FXATHBCAD": {
+            "label": "THB/CAD",
+            "description": "Annual average exchange rate of the Thai baht in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Thai baht",
+                "frequency": "Annual"
+            }
+        },
+        "FXATRYCAD": {
+            "label": "TRY/CAD",
+            "description": "Annual average exchange rate of the Turkish lira in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Turkish lira",
+                "frequency": "Annual"
+            }
+        },
+        "FXAGBPCAD": {
+            "label": "GBP/CAD",
+            "description": "Annual average exchange rate of the UK pound sterling in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per UK pound sterling",
+                "frequency": "Annual"
+            }
+        },
+        "FXAUSDCAD": {
+            "label": "USD/CAD",
+            "description": "Annual average exchange rate of the US dollar in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per US dollar",
+                "frequency": "Annual"
+            }
+        },
+        "FXAVNDCAD": {
+            "label": "VND/CAD",
+            "description": "Annual average exchange rate — historical series of the Vietnamese dong in Canadian dollars.",
+            "dimension": {
+                "key": "d",
+                "name": "Date"
+            },
+            "dateFormat": "annual",
+            "metadata": {
+                "unit": "Canadian dollars per Vietnamese dong",
+                "frequency": "Annual"
+            }
+        }
+    },
+    "observations": [
+        {
+            "d": "2024-01-01",
+            "FXAPENCAD": {
+                "v": "0.3650"
+            },
+            "FXAUSDCAD": {
+                "v": "1.3698"
+            },
+            "FXAGBPCAD": {
+                "v": "1.7504"
+            },
+            "FXATRYCAD": {
+                "v": "0.04180"
+            },
+            "FXATWDCAD": {
+                "v": "0.04266"
+            },
+            "FXACHFCAD": {
+                "v": "1.5558"
+            },
+            "FXASEKCAD": {
+                "v": "0.1296"
+            },
+            "FXAKRWCAD": {
+                "v": "0.001005"
+            },
+            "FXAZARCAD": {
+                "v": "0.07477"
+            },
+            "FXASGDCAD": {
+                "v": "1.0250"
+            },
+            "FXASARCAD": {
+                "v": "0.3650"
+            },
+            "FXARUBCAD": {
+                "v": "0.01479"
+            },
+            "FXAAUDCAD": {
+                "v": "0.9035"
+            },
+            "FXANOKCAD": {
+                "v": "0.1274"
+            },
+            "FXANZDCAD": {
+                "v": "0.8286"
+            },
+            "FXAMXNCAD": {
+                "v": "0.07520"
+            },
+            "FXAJPYCAD": {
+                "v": "0.009050"
+            },
+            "FXAIDRCAD": {
+                "v": "0.000086"
+            },
+            "FXAINRCAD": {
+                "v": "0.01637"
+            },
+            "FXAHKDCAD": {
+                "v": "0.1755"
+            },
+            "FXAEURCAD": {
+                "v": "1.4818"
+            },
+            "FXACNYCAD": {
+                "v": "0.1903"
+            },
+            "FXABRLCAD": {
+                "v": "0.2553"
+            }
+        }
+    ]
+}

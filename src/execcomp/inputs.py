@@ -26,7 +26,7 @@ def load_companies(path):
                 raise ValueError('Company and symbol must be populated')
             key = identity(row['company']), row['symbol'].strip().upper()
             group = groups.setdefault(key, dict(row, executives=[], all_executives=False))
-            for field in ['ir_url','document','financial_document','profile']:
+            for field in ['ir_url','document','financial_document','profile','prior_document','prior_profile']:
                 if group.get(field) and row.get(field) and group[field] != row[field]:
                     raise ValueError(f'Conflicting {field} for {key}')
                 if row.get(field): group[field] = row[field]

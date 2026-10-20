@@ -39,8 +39,10 @@ def extract_compensation(evidence, profile, target_year):
     if len(anchors) != profile['expected_rows']: raise ValueError('Unexpected table row count; manual review required')
     records=[]
     for index, anchor in enumerate(anchors):
-        top=anchor['top']; bottom=anchors[index+1]['top']-3 if index+1<len(anchors) else ymax
-        identity_words=[w for w in words if w['x1']<year_x-3 and top-3<=w['top']<bottom]
+        top=anchor['top']; tolerance=profile.get('identity_top_tolerance',3)
+        bottom=anchors[index+1]['top']-tolerance if index+1<len(anchors) else ymax
+        identity_words=[dict(w,top=top if abs(w['top']-top)<=tolerance else w['top']) for w in words
+            if w['x1']<year_x-3 and top-tolerance<=w['top']<bottom]
         original_identity=joined(identity_words)
         # Position begins at an explicit position word. No fuzzy name guesses.
         match = re.search(r'\b(President|Executive|Senior|Director)\b',original_identity)

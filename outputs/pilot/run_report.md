@@ -1,6 +1,6 @@
 # Run report: fiscal years ending in 2025
 
-Started locally: 2026-10-20T14:38:08.694798-07:00
+Started locally: 2026-10-20T15:03:17.418282-07:00
 
 Collected 16 executive records across 3 companies.
 Ranked 16 confirmed totals. 40 unresolved field or collection items.
@@ -10,6 +10,12 @@ USD conversion: Bank of Canada annual average for 2025, 1.3978 CAD per USD. Sour
 Dashes remain null. Not applicable and not disclosed remain distinct. Missing components do not invalidate an independently verified total.
 
 Reconciliation is incomplete when any source component is nonnumeric. The diagnostic sum of known components is not a reconstructed total.
+
+## Roster comparison
+Roster: 8 new; 2 removed; 0 unverified baseline rows; 110 baseline rows outside selected companies.
+Prior-year USD conversion uses the Bank of Canada annual average for 2024: 1.3698. Missing originals or amounts remain blank.
+6 new executives have rows in reviewed original prior-year disclosures.
+Red means absent from a successfully reviewed full compensation roster; it does not establish employment termination.
 
 ## Unresolved items
 - Interfor Corporation / Ian M. Fillinger / option_awards: Source dash has no verified numeric meaning
@@ -60,7 +66,7 @@ Reconciliation is incomplete when any source component is nonnumeric. The diagno
 - New issuers, later years, ambiguous identity matches, restricted sites and unsupported currencies require reviewed inputs. No placeholder rows count as successful collection.
 - Re-run the pipeline to refresh ranking/order after changing source inputs. Workbook formulas show conversions; it is a run snapshot.
 
-Current workbook: execs_comp.xlsx
+Current workbook: execs_comp_roster.xlsx
 
 ## Workbook verification
 Workbook renderer returned Windows shutdown status 3221226505 after export; independent saved-file checks passed.

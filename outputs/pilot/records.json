@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "run": {
     "target_year": 2025,
-    "started_local": "2026-10-20T14:38:08.694798-07:00",
+    "started_local": "2026-10-20T15:03:17.418282-07:00",
     "method": "Deterministic PDF word coordinates and explicit reviewed layout profiles; no generative extraction.",
     "fx": {
       "rate": "1.3978",
@@ -17,7 +17,26 @@
     },
     "fx_policy": "Bank of Canada FXAUSDCAD annual average for local run calendar year minus one; no daily or prior-year fallback.",
     "ranking": "Descending confirmed CAD reported totals; competition ranks for ties; unavailable totals unranked.",
-    "workbook_filename": "execs_comp.xlsx",
+    "baseline": {
+      "path": "C:\\Users\\tiffa\\Desktop\\projects\\executive-compensation-disclosures\\data\\templates\\execs_comp_template.xlsx",
+      "sha256": "370b4d91de66c4c605040de717ba9e1e9e97fb2a00d70cbab14de65e7e1e8831",
+      "sheet": "Sheet1"
+    },
+    "prior_year": 2024,
+    "prior_fx": {
+      "rate": "1.3698",
+      "date": null,
+      "observation_label": "2024-01-01",
+      "period": "2024",
+      "basis": "annual_average",
+      "series": "FXAUSDCAD",
+      "url": "https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/",
+      "data_url": "https://www.bankofcanada.ca/valet/observations/group/FX_RATES_ANNUAL/json?start_date=2024-01-01&end_date=2024-12-31",
+      "response_sha256": "aacf6df5e1d543db7afd72db40a18c5baec0a26d9d37bb1c102db63d16db96e4"
+    },
+    "baseline_rows_outside_input": 110,
+    "roster_policy": "Compare all disclosed executives in selected companies. Red means absent from a verified full roster, not employment termination.",
+    "workbook_filename": "execs_comp_roster.xlsx",
     "template": {
       "path": "data\\templates\\execs_comp_template.xlsx",
       "sha256": "370b4d91de66c4c605040de717ba9e1e9e97fb2a00d70cbab14de65e7e1e8831",
@@ -27,62 +46,64 @@
           {
             "field": "salary",
             "usd": "H",
-            "cad": "J"
+            "cad": "J",
+            "prior_usd": "I",
+            "prior_cad": "K"
           },
           {
             "field": "share_awards",
             "usd": "L",
-            "cad": "N"
+            "cad": "N",
+            "prior_usd": "M",
+            "prior_cad": "O"
           },
           {
             "field": "option_awards",
             "usd": "P",
-            "cad": "R"
+            "cad": "R",
+            "prior_usd": "Q",
+            "prior_cad": "S"
           },
           {
             "field": "annual_incentive",
             "usd": "T",
-            "cad": "V"
+            "cad": "V",
+            "prior_usd": "U",
+            "prior_cad": "W"
           },
           {
             "field": "pension",
             "usd": "X",
-            "cad": "Z"
+            "cad": "Z",
+            "prior_usd": "Y",
+            "prior_cad": "AA"
           },
           {
             "field": "other",
             "usd": "AB",
-            "cad": "AD"
+            "cad": "AD",
+            "prior_usd": "AC",
+            "prior_cad": "AE"
           },
           {
             "field": "total",
             "usd": "AF",
-            "cad": "AG"
+            "cad": "AG",
+            "prior_usd": "AH",
+            "prior_cad": "AI"
           },
           {
             "field": "long_term_incentive",
             "usd": "AL",
-            "cad": "AM"
+            "cad": "AM",
+            "prior_usd": "AP",
+            "prior_cad": "AQ"
           }
         ],
         "blank_columns": [
           "C",
           "D",
-          "G",
-          "I",
-          "K",
-          "M",
-          "O",
-          "Q",
-          "S",
-          "U",
-          "W",
-          "Y",
-          "AA",
-          "AC",
-          "AE",
-          "AH",
-          "AI"
+          "G"
         ],
         "first_name": "A",
         "last_name": "B",
@@ -435,7 +456,9 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 1
+      "rank": 1,
+      "roster_status": "existing",
+      "baseline_row": 12
     },
     {
       "executive": "Clive Johnson",
@@ -772,7 +795,9 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 2
+      "rank": 2,
+      "roster_status": "existing",
+      "baseline_row": 20
     },
     {
       "executive": "Gustavo Parra",
@@ -1115,7 +1140,288 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 3
+      "rank": 3,
+      "roster_status": "new",
+      "prior_year": {
+        "year": 2024,
+        "fiscal_end": "2024-12-31",
+        "fields": {
+          "salary": {
+            "source_label": "Base Salary(2)",
+            "raw": "553,971",
+            "amount": "553971",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              165,
+              409.88671875,
+              212,
+              423.88671875
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": "553971",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "share_awards": {
+            "source_label": "Share-Based Awards(3)",
+            "raw": "463,401",
+            "amount": "463401",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              212,
+              409.88671875,
+              260,
+              423.88671875
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": "463401",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "option_awards": {
+            "source_label": "Option-Based Awards(4)",
+            "raw": "464,019",
+            "amount": "464019",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              260,
+              409.88671875,
+              308,
+              423.88671875
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": "464019",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "annual_incentive": {
+            "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(5)",
+            "raw": "454,000",
+            "amount": "454000",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              308,
+              409.88671875,
+              356,
+              423.88671875
+            ],
+            "mapping": "Annual short-term incentive heading; direct mapping, no long-term amounts combined.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": "454000",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "long_term_incentive": {
+            "source_label": "Non-Equity Incentive Plan Compensation - Long-Term Incentive Plans",
+            "raw": "—",
+            "amount": null,
+            "status": "uncertain",
+            "reason": "Source dash has no verified numeric meaning",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              356,
+              409.88671875,
+              401,
+              423.88671875
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": null,
+            "applied_rate": null,
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "pension": {
+            "source_label": "Pension Value(6)",
+            "raw": "48,290",
+            "amount": "48290",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              401,
+              409.88671875,
+              449,
+              423.88671875
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": "48290",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "other": {
+            "source_label": "All Other Compensation(7)",
+            "raw": "614,996",
+            "amount": "614996",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              449,
+              409.88671875,
+              498,
+              423.88671875
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": "614996",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "total": {
+            "source_label": "Total Compensation",
+            "raw": "2,598,678",
+            "amount": "2598678",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              498,
+              409.88671875,
+              560,
+              423.88671875
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": "2598678",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          }
+        },
+        "source_id": "methanex_prior",
+        "reason": ""
+      }
     },
     {
       "executive": "Michael Cinnamond",
@@ -1452,7 +1758,9 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 4
+      "rank": 4,
+      "roster_status": "existing",
+      "baseline_row": 48
     },
     {
       "executive": "William Lytle",
@@ -1789,7 +2097,9 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 5
+      "rank": 5,
+      "roster_status": "existing",
+      "baseline_row": 49
     },
     {
       "executive": "Randall Chatwin",
@@ -2126,7 +2436,9 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 6
+      "rank": 6,
+      "roster_status": "existing",
+      "baseline_row": 62
     },
     {
       "executive": "Ian M. Fillinger",
@@ -2469,7 +2781,9 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 7
+      "rank": 7,
+      "roster_status": "existing",
+      "baseline_row": 35
     },
     {
       "executive": "Dean Richardson",
@@ -2812,7 +3126,9 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 8
+      "rank": 8,
+      "roster_status": "existing",
+      "baseline_row": 67
     },
     {
       "executive": "Victor King",
@@ -3149,7 +3465,9 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 9
+      "rank": 9,
+      "roster_status": "existing",
+      "baseline_row": 65
     },
     {
       "executive": "Karine Delbarre",
@@ -3492,7 +3810,288 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 10
+      "rank": 10,
+      "roster_status": "new",
+      "prior_year": {
+        "year": 2024,
+        "fiscal_end": "2024-12-31",
+        "fields": {
+          "salary": {
+            "source_label": "Base Salary(2)",
+            "raw": "526,974",
+            "amount": "526974",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              165,
+              455.09670875,
+              212,
+              469.09670875
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": "526974",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "share_awards": {
+            "source_label": "Share-Based Awards(3)",
+            "raw": "440,517",
+            "amount": "440517",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              212,
+              455.09670875,
+              260,
+              469.09670875
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": "440517",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "option_awards": {
+            "source_label": "Option-Based Awards(4)",
+            "raw": "440,818",
+            "amount": "440818",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              260,
+              455.09670875,
+              308,
+              469.09670875
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": "440818",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "annual_incentive": {
+            "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(5)",
+            "raw": "376,000",
+            "amount": "376000",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              308,
+              455.09670875,
+              356,
+              469.09670875
+            ],
+            "mapping": "Annual short-term incentive heading; direct mapping, no long-term amounts combined.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": "376000",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "long_term_incentive": {
+            "source_label": "Non-Equity Incentive Plan Compensation - Long-Term Incentive Plans",
+            "raw": "—",
+            "amount": null,
+            "status": "uncertain",
+            "reason": "Source dash has no verified numeric meaning",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              356,
+              455.09670875,
+              401,
+              469.09670875
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": null,
+            "applied_rate": null,
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "pension": {
+            "source_label": "Pension Value(6)",
+            "raw": "47,627",
+            "amount": "47627",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              401,
+              455.09670875,
+              449,
+              469.09670875
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": "47627",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "other": {
+            "source_label": "All Other Compensation(7)",
+            "raw": "1,081,768",
+            "amount": "1081768",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              449,
+              455.09670875,
+              498,
+              469.09670875
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": "1081768",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "total": {
+            "source_label": "Total Compensation",
+            "raw": "2,913,704",
+            "amount": "2913704",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 90,
+            "bbox": [
+              498,
+              455.09670875,
+              560,
+              469.09670875
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+              "filename": "methanex_circular_2025.pdf",
+              "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+              "document_date": "2025-03-06",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 90
+            },
+            "cad": "2913704",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          }
+        },
+        "source_id": "methanex_prior",
+        "reason": ""
+      }
     },
     {
       "executive": "Kevin Maloney",
@@ -3835,7 +4434,13 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 11
+      "rank": 11,
+      "roster_status": "new",
+      "prior_year": {
+        "year": 2024,
+        "fields": {},
+        "reason": "No unique executive row in the reviewed original prior-year disclosure."
+      }
     },
     {
       "executive": "S. Bruce Luxmoore",
@@ -4178,7 +4783,288 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 12
+      "rank": 12,
+      "roster_status": "new",
+      "prior_year": {
+        "year": 2024,
+        "fiscal_end": "2024-12-31",
+        "fields": {
+          "salary": {
+            "source_label": "Salary",
+            "raw": "641,066",
+            "amount": "641066",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              150,
+              392.86888000000005,
+              195,
+              406.86888000000005
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "641066",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "share_awards": {
+            "source_label": "Share Based Awards (1)(2)",
+            "raw": "570,788",
+            "amount": "570788",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              195,
+              392.86888000000005,
+              250,
+              406.86888000000005
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "570788",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "option_awards": {
+            "source_label": "Option Based Awards",
+            "raw": "-",
+            "amount": null,
+            "status": "uncertain",
+            "reason": "Source dash has no verified numeric meaning",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              250,
+              392.86888000000005,
+              290,
+              406.86888000000005
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": null,
+            "applied_rate": null,
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "annual_incentive": {
+            "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(3)",
+            "raw": "-",
+            "amount": null,
+            "status": "uncertain",
+            "reason": "Source dash has no verified numeric meaning",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              290,
+              392.86888000000005,
+              335,
+              406.86888000000005
+            ],
+            "mapping": "Annual short-term incentive heading; direct mapping, no long-term amounts combined.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": null,
+            "applied_rate": null,
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "long_term_incentive": {
+            "source_label": "Non-Equity Incentive Plan Compensation - Long-term Incentive Plans",
+            "raw": "-",
+            "amount": null,
+            "status": "uncertain",
+            "reason": "Source dash has no verified numeric meaning",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              335,
+              392.86888000000005,
+              385,
+              406.86888000000005
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": null,
+            "applied_rate": null,
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "pension": {
+            "source_label": "Pension Value(4)",
+            "raw": "114,291",
+            "amount": "114291",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              385,
+              392.86888000000005,
+              440,
+              406.86888000000005
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "114291",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "other": {
+            "source_label": "All Other Compensation(5)",
+            "raw": "199,031",
+            "amount": "199031",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              440,
+              392.86888000000005,
+              500,
+              406.86888000000005
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "199031",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "total": {
+            "source_label": "Total Compensation(6)",
+            "raw": "1,525,176",
+            "amount": "1525176",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              500,
+              392.86888000000005,
+              570,
+              406.86888000000005
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "1525176",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          }
+        },
+        "source_id": "interfor_prior",
+        "reason": ""
+      }
     },
     {
       "executive": "Richard A. Pozzebon",
@@ -4521,7 +5407,288 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 13
+      "rank": 13,
+      "roster_status": "new",
+      "prior_year": {
+        "year": 2024,
+        "fiscal_end": "2024-12-31",
+        "fields": {
+          "salary": {
+            "source_label": "Salary",
+            "raw": "530,400",
+            "amount": "530400",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              150,
+              336.94888000000003,
+              195,
+              350.94888000000003
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "530400",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "share_awards": {
+            "source_label": "Share Based Awards (1)(2)",
+            "raw": "698,641",
+            "amount": "698641",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              195,
+              336.94888000000003,
+              250,
+              350.94888000000003
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "698641",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "option_awards": {
+            "source_label": "Option Based Awards",
+            "raw": "-",
+            "amount": null,
+            "status": "uncertain",
+            "reason": "Source dash has no verified numeric meaning",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              250,
+              336.94888000000003,
+              290,
+              350.94888000000003
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": null,
+            "applied_rate": null,
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "annual_incentive": {
+            "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(3)",
+            "raw": "-",
+            "amount": null,
+            "status": "uncertain",
+            "reason": "Source dash has no verified numeric meaning",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              290,
+              336.94888000000003,
+              335,
+              350.94888000000003
+            ],
+            "mapping": "Annual short-term incentive heading; direct mapping, no long-term amounts combined.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": null,
+            "applied_rate": null,
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "long_term_incentive": {
+            "source_label": "Non-Equity Incentive Plan Compensation - Long-term Incentive Plans",
+            "raw": "-",
+            "amount": null,
+            "status": "uncertain",
+            "reason": "Source dash has no verified numeric meaning",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              335,
+              336.94888000000003,
+              385,
+              350.94888000000003
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": null,
+            "applied_rate": null,
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "pension": {
+            "source_label": "Pension Value(4)",
+            "raw": "97,923",
+            "amount": "97923",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              385,
+              336.94888000000003,
+              440,
+              350.94888000000003
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "97923",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "other": {
+            "source_label": "All Other Compensation(5)",
+            "raw": "79,942",
+            "amount": "79942",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              440,
+              336.94888000000003,
+              500,
+              350.94888000000003
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "79942",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "total": {
+            "source_label": "Total Compensation(6)",
+            "raw": "1,406,906",
+            "amount": "1406906",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              500,
+              336.94888000000003,
+              570,
+              350.94888000000003
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "1406906",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          }
+        },
+        "source_id": "interfor_prior",
+        "reason": ""
+      }
     },
     {
       "executive": "Timothy P. Hartnett",
@@ -4864,7 +6031,288 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 14
+      "rank": 14,
+      "roster_status": "new",
+      "prior_year": {
+        "year": 2024,
+        "fiscal_end": "2024-12-31",
+        "fields": {
+          "salary": {
+            "source_label": "Salary",
+            "raw": "569,837",
+            "amount": "569837",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              150,
+              496.18888000000004,
+              195,
+              510.18888000000004
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "569837",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "share_awards": {
+            "source_label": "Share Based Awards (1)(2)",
+            "raw": "405,879",
+            "amount": "405879",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              195,
+              496.18888000000004,
+              250,
+              510.18888000000004
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "405879",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "option_awards": {
+            "source_label": "Option Based Awards",
+            "raw": "-",
+            "amount": null,
+            "status": "uncertain",
+            "reason": "Source dash has no verified numeric meaning",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              250,
+              496.18888000000004,
+              290,
+              510.18888000000004
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": null,
+            "applied_rate": null,
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "annual_incentive": {
+            "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(3)",
+            "raw": "-",
+            "amount": null,
+            "status": "uncertain",
+            "reason": "Source dash has no verified numeric meaning",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              290,
+              496.18888000000004,
+              335,
+              510.18888000000004
+            ],
+            "mapping": "Annual short-term incentive heading; direct mapping, no long-term amounts combined.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": null,
+            "applied_rate": null,
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "long_term_incentive": {
+            "source_label": "Non-Equity Incentive Plan Compensation - Long-term Incentive Plans",
+            "raw": "-",
+            "amount": null,
+            "status": "uncertain",
+            "reason": "Source dash has no verified numeric meaning",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              335,
+              496.18888000000004,
+              385,
+              510.18888000000004
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": null,
+            "applied_rate": null,
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "pension": {
+            "source_label": "Pension Value(4)",
+            "raw": "92,352",
+            "amount": "92352",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              385,
+              496.18888000000004,
+              440,
+              510.18888000000004
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "92352",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "other": {
+            "source_label": "All Other Compensation(5)",
+            "raw": "189,503",
+            "amount": "189503",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              440,
+              496.18888000000004,
+              500,
+              510.18888000000004
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "189503",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "total": {
+            "source_label": "Total Compensation(6)",
+            "raw": "1,257,571",
+            "amount": "1257571",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              500,
+              496.18888000000004,
+              570,
+              510.18888000000004
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "1257571",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          }
+        },
+        "source_id": "interfor_prior",
+        "reason": ""
+      }
     },
     {
       "executive": "Andrew L. Horahan",
@@ -5207,7 +6655,288 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 15
+      "rank": 15,
+      "roster_status": "new",
+      "prior_year": {
+        "year": 2024,
+        "fiscal_end": "2024-12-31",
+        "fields": {
+          "salary": {
+            "source_label": "Salary",
+            "raw": "468,000",
+            "amount": "468000",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              150,
+              440.26888,
+              195,
+              454.26888
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "468000",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "share_awards": {
+            "source_label": "Share Based Awards (1)(2)",
+            "raw": "570,788",
+            "amount": "570788",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              195,
+              440.26888,
+              250,
+              454.26888
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "570788",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "option_awards": {
+            "source_label": "Option Based Awards",
+            "raw": "-",
+            "amount": null,
+            "status": "uncertain",
+            "reason": "Source dash has no verified numeric meaning",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              250,
+              440.26888,
+              290,
+              454.26888
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": null,
+            "applied_rate": null,
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "annual_incentive": {
+            "source_label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(3)",
+            "raw": "-",
+            "amount": null,
+            "status": "uncertain",
+            "reason": "Source dash has no verified numeric meaning",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              290,
+              440.26888,
+              335,
+              454.26888
+            ],
+            "mapping": "Annual short-term incentive heading; direct mapping, no long-term amounts combined.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": null,
+            "applied_rate": null,
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "long_term_incentive": {
+            "source_label": "Non-Equity Incentive Plan Compensation - Long-term Incentive Plans",
+            "raw": "-",
+            "amount": null,
+            "status": "uncertain",
+            "reason": "Source dash has no verified numeric meaning",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              335,
+              440.26888,
+              385,
+              454.26888
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": null,
+            "applied_rate": null,
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "pension": {
+            "source_label": "Pension Value(4)",
+            "raw": "85,911",
+            "amount": "85911",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              385,
+              440.26888,
+              440,
+              454.26888
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "85911",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "other": {
+            "source_label": "All Other Compensation(5)",
+            "raw": "145,832",
+            "amount": "145832",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              440,
+              440.26888,
+              500,
+              454.26888
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "145832",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          },
+          "total": {
+            "source_label": "Total Compensation(6)",
+            "raw": "1,270,531",
+            "amount": "1270531",
+            "status": "reported",
+            "reason": "",
+            "currency": "CAD",
+            "units": 1,
+            "page": 58,
+            "bbox": [
+              500,
+              440.26888,
+              570,
+              454.26888
+            ],
+            "mapping": "Reported table value; no award revaluation or reconstruction.",
+            "footnote_reference": "PDF p.58, SCT notes (1)-(7). Preserve issuer-reported CAD and grant-date awards.",
+            "evidence": {
+              "document_url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+              "filename": "interfor_circular_2025.pdf",
+              "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+              "document_date": "2025-03-12",
+              "fiscal_end": "2024-12-31",
+              "table_heading": "Summary Compensation Table",
+              "page": 58
+            },
+            "cad": "1270531",
+            "applied_rate": "1",
+            "converted_from_usd": false,
+            "fx_date": null,
+            "fx_url": null,
+            "fx_period": null,
+            "fx_basis": null
+          }
+        },
+        "source_id": "interfor_prior",
+        "reason": ""
+      }
     },
     {
       "executive": "Michael C. Mackay",
@@ -5550,7 +7279,13 @@
         "note": "Incomplete components remain null; total is copied independently from the source."
       },
       "status": "Verified total; component review required",
-      "rank": 16
+      "rank": 16,
+      "roster_status": "new",
+      "prior_year": {
+        "year": 2024,
+        "fields": {},
+        "reason": "No unique executive row in the reviewed original prior-year disclosure."
+      }
     }
   ],
   "sources": [
@@ -5641,6 +7376,35 @@
       "sha256": "8b8899e183155be75bbc51d96361220ced0cd44fd69fb05ee624e7d80d0779c2",
       "table_heading": "CONSOLIDATED STATEMENTS OF OPERATIONS",
       "page": 160
+    },
+    {
+      "id": "interfor_prior",
+      "filename": "interfor_circular_2025.pdf",
+      "saved_file": "data\\documents\\interfor_circular_2025.pdf",
+      "sha256": "091d06a72460a899fc4283db338c18407341678137b631a23657bbde5aacb659",
+      "url": "https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf",
+      "document_date": "2025-03-12",
+      "fiscal_end": "2024-12-31",
+      "selection_note": "Original 2025 issuer circular for fiscal year ended December 31, 2024, selected from official issuer reports archive; no later comparative substitution.",
+      "page_text": {
+        "1": "Notice of the Annual General\nMeeting of Shareholders and\nManagement Information Circular\nMarch 12, 2025",
+        "6": "MANAGEMENT INFORMATION CIRCULAR\nYou have received this Information Circular because you owned Shares on March 12, 2025,\nand Interfor’s management is soliciting your proxy for the upcoming annual general meeting\non May 8, 2025.\nWe are contacting Shareholders primarily using a “notice and access” procedure under\nCanadian securities rules. The Company is paying for the cost of soliciting your proxy. Our\nBoard has approved the contents of this Information Circular and has authorized us to\ndistribute it to Shareholders.\nIn this Information Circular:\n• “you” and “your” mean Shareholders\n• “we”, “us”, “our”, “Company” and “Interfor” mean Interfor Corporation\n• “Board” means Interfor’s board of directors\n• “Shares” means Interfor’s common shares\n• “Shareholder” means a holder of Shares\n• “Information Circular” means this management information circular\n• “Meeting” means the 2025 annual general meeting of Shareholders\n• “Record Date” means March 12, 2025\nIn this Information Circular, all dollar amounts are in Canadian dollars and information is as\nof March 12, 2025, unless stated otherwise.\nMEETING MATERIALS\nWe are delivering your Meeting materials, including this Information Circular, by sending\nyou a notice (a “Short Form Notice”) and making the Meeting materials available for\ndownload from our website at www.interfor.com/investors/reports, on March 12, 2025 and\nfor at least one year after that date. The Meeting materials can also be accessed under\nInterfor’s profile on SEDAR+ at www.sedarplus.ca. If you have any questions about this\n“notice and access” process, you can call Computershare Investor Services Inc. toll free (in\nNorth America) at 1-866-964-0492.\nWe will mail a paper copy of the Meeting materials to any Shareholder who previously\nrequested a paper copy. If you received only the Short Form Notice and would like a paper\ncopy of the Meeting materials please call us at 1-844-210-2879.\nIf you are a beneficial Shareholder who has not objected to the Company being given your\nname, address and the number of Shares you hold, then we will send the Short Form Notice\nand associated materials to you in accordance with applicable securities regulatory\nrequirements. If you are an objecting beneficial Shareholder, then Interfor will pay for\nclearing agencies and intermediaries to deliver to you the Short Form Notice and associated\nmaterials.\nINTERFOR 2025 5\nInformation Circular",
+        "58": "SUMMARY COMPENSATION TABLE\nThe following table shows the total realized and target compensation awarded to the\nCompany’s Named Executive Officers for the fiscal years ended December 31, 2022,\nDecember 31, 2023 and December 31, 2024.\nShare Based Awards for 2022 were granted under the Prior PSU Plan with a Performance\nPeriod end date of December 31, 2024. Share Based Awards for 2023 and 2024 were\ngranted under the New PSU Plan and the RSU Plan, comprising the Company’s long-term\nincentive program. The amounts shown represent the fair value of the awards at the grant\ndates and do not represent the actual value of the payout to be received upon maturity of\nthe awards.\nNon-Equity Incentive\nShare Option Plan Compensation\nName and Pension All Other Total\nP P r o in si c t i i p o a n l Year Salary A B w ( a 1) a s ( e r 2) d d s A B w a a s r e d d s In A c n e n n u t a iv l e In L c t o e e n r n m g ti - ve Valu e(4) Compe (5 n ) s ation Compe (6 n ) s ation\nPlans(3)\nPlans\n$ $ $ $ $ $ $ $ $\nIan M. Fillinger 2024 842,400 2,023,501 - - - 209,744 157,197 3,232,842\nPresident & 2023 823,500 2,175,875 - 884,520 - 357,753 143,851 4,385,499\nChief Executive 2022 802,708 2,018,255 - 1,944,000 - 342,784 144,800 5,252,547\nOfficer\nRichard A. 2024 530,400 698,641 - - - 97,923 79,942 1,406,906\nPozzebon 2023 518,500 733,200 - 397,800 - 169,940 80,084 1,899,524\nExecutive Vice 2022 487,083 565,930 - 918,000 - 125,557 53,630 2,150,200\nPresident &\nChief Financial\nOfficer\nS. Bruce 2024 641,066 570,788 - - - 114,291 199,031 1,525,176\nLuxmoore 2023 617,488 599,024 - 505,328 - 205,168 196,464 2,123,472\nExecutive Vice 2022 565,252 499,334 - 1,124,323 - 146,023 110,259 2,445,191\nPresident, U.S.\nOperations(7)\nAndrew L. 2024 468,000 570,788 - - - 85,911 145,832 1,270,531\nHorahan 2023 457,500 599,024 - 374,400 - 153,840 101,501 1,686,265\nExecutive Vice 2022 439,583 499,334 - 864,000 - 118,907 78,334 2,000,158\nPresident,\nCanadian\nOperations\nTimothy P. 2024 569,837 405,879 - - - 92,352 189,503 1,257,571\nHartnett 2023 548,878 425,989 - 421,106 - 88,251 148,756 1,632,980\nSenior Vice 2022 236,570 164,390 - 446,650 - 12,145 64,608 924,363\nPresident,\nHuman\nResources(7)\n(1) Share Based Awards for 2022 consist 100% of PSUs awarded under the Prior PSU Plan. For 2023 & 2024, 60% of Share Based Awards consists of PSUs awarded\nunder the New PSU Plan, and the remaining 40% consists of RSUs awarded under the RSU Plan. The amounts shown for PSU awards represents the fair value of\nthe award at grant date. The fair value of the 2022, 2023 and 2024 PSU awards were calculated by multiplying the number of PSUs granted by their grant date\nMarket Value, because the ROIC and ROCE performance conditions cannot be appropriately valued using the Black-Scholes pricing model. This is consistent with\nthe methodology used for financial reporting purposes, in accordance with International Financial Reporting Standard 2, Share-based Payment (IFRS 2). The fair\nvalue of the PSUs on grant date does not represent the actual value of the payout which will be received at the end of the Performance Period.\n(2) For 2023 & 2024, 40% of Share Based Awards consists of RSUs awarded under the RSU Plan, and the remaining 60% consists of PSUs awarded under the New\nPSU Plan. The amounts shown for RSU awards represents the fair value of the award at grant date. The fair value of the 2023 & 2024 RSU awards were calculated\nby multiplying the number of RSUs granted by their grant date Market Value. This is also the accounting fair value. The fair value of the RSUs on grant date does\nnot represent the actual value of the payout which will be received on the vesting date of the RSUs.\n(3) Annual Incentive Plans reflect STIP awards made to the Named Executive Officers.\n(4) Pension Value amounts include Company contributions to the SERP Plan (defined hereafter).\n(5) All Other Compensation includes Company contributions to the DPSP (defined hereafter) for Canadian-based Named Executive Officers and Company contributions\nto the 401(k) for US-based Named Executive Officers. In addition, it includes Company contributions to the ESPP starting in November 2022, in which Named\nExecutive Officers participate on the same terms as other employees, except that Company contributions for Named Executive Officers are capped at $8,333 per\nyear. Also included are perquisites, insurance premiums and other personal benefits provided to a Named Executive Officer that are not generally available to all\nemployees.\n(6) Total Compensation represents the sum of the amounts in the other columns. It includes the valuation of share-based and option-based awards which may or\nmay not be realized over the life of the awards.\n(7) Mr. Luxmoore and Mr. Hartnett’s amounts have been converted from U.S. Dollars to Canadian Dollars using the Bank of Canada average rate for the relevant\nyear.\nINTERFOR 2025 57\nInformation Circular"
+      }
+    },
+    {
+      "id": "methanex_prior",
+      "filename": "methanex_circular_2025.pdf",
+      "saved_file": "data\\documents\\methanex_circular_2025.pdf",
+      "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+      "url": "https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf",
+      "document_date": "2025-03-06",
+      "fiscal_end": "2024-12-31",
+      "selection_note": "Original 2025 issuer circular for fiscal year ended December 31, 2024, selected from official issuer reports archive; no later comparative substitution.",
+      "page_text": {
+        "90": "Introduction Voting Business of the Meeting About the Directors Corporate Governance Compensation Other Information\nStatement of executive compensation\nAll amounts in this section “Statement of Executive Compensation” are in Canadian dollars except where\notherwise noted.\nSummary compensation\nThe following table sets forth a summary of compensation earned during the last three years by the Company’s NEOs.\nSUMMARY COMPENSATION TABLE\nNon-Equity Incentive\nPlan Compensation\nShare- Option- Annual Long- All Other Total\nName and Base Based Based Incentive Term Pension Compen- Compen-\nPrincipal Salary(2) Awards(3) Awards(4) Plans(5) Incentive Value(6) sation(7) sation\nPosition Year ($) ($) ($) ($) Plans ($) ($) ($)\nRich Sumner 2024 1,082,500 2,414,262 2,412,898 1,583,000 — 267,919 230,795 7,991,374\nPresident & CEO 2023 1,030,000 2,131,596 2,131,432 1,300,000 — 254,925 168,603 7,016,556\n2022 496,375 404,300 402,568 441,000 — 92,822 424,755 2,261,820\nDean Richardson 2024 618,000 623,589 623,848 542,000 — 118,965 191,272 2,717,674\nSenior VP, Finance 2023 584,167 592,110 589,202 369,000 — 111,325 209,642 2,455,446\n& CFO 2022 410,000 227,652 227,504 215,865 — 65,395 258,112 1,404,528\nGustavo Parra(1) 2024 553,971 463,401 464,019 454,000 — 48,290 614,996 2,598,678\nSenior VP, 2023 583,250 431,892 431,438 351,000 — 51,228 531,666 2,380,474\nManufacturing\n2022 480,772 227,652 227,504 253,180 — 246,986 4,167,393 5,603,487\nKarine Delbarre(1) 2024 526,974 440,517 440,818 376,000 — 47,627 1,081,768 2,913,704\nSenior VP, Global 2023 500,000 417,960 415,339 249,000 — 99,319 625,233 2,306,851\nMarketing & Logistics\n2022 390,315 210,858 70,185 159,869 — 39,690 65,134 936,051\nBrad Boyd 2024 572,250 486,285 487,220 409,000 — 107,011 145,034 2,206,800\nSenior VP, Corporate 2023 535,225 452,790 450,756 322,000 — 100,087 133,956 1,994,814\nResources 2022 513,525 416,740 415,811 403,000 — 96,029 109,034 1,954,139\n(1) Where applicable, Mr. Parra’s amounts have been converted from Chilean pesos (based on the following average annual exchange\nrates: 1 CLP = 0.0015 CAD in 2024, 1 CLP = 0.0016 CAD in 2023, and 1 CLP = 0.0015 CAD in 2022) and Ms. Delbarre’s amounts have\nbeen converted from US dollars (based on the following average annual exchange rates: 1 USD = 1.3698 CAD in 2024, 1 USD = 1.3497\nCAD in 2023, and 1 USD = 1.3013 CAD in 2022).\n(2) Values in this column reflect base salary from January 1st to December 31st each year. Salary increases are effective from April 1st of\neach year.\n(3) This column reflects the grant date fair value of PSUs and RSUs granted to NEOs as long-term incentive awards. At the time of vesting,\na minimum of 0% to a maximum of 200% of PSUs will vest depending on the Company's performance against predetermined criteria.\nThe performance criteria is based on an equal combination of a) total shareholder return compared against the TSR of the S&P\nComposite 1500 Chemicals Index over a three-year period and b) the three-year average Modified ROCE over the same period. RSUs\nvest at 100% on December 31 of the third year after the grant date. The grant date fair value shown in this column is calculated by\nmultiplying the total number of PSUs and RSUs awarded by the closing price of the Common Shares on the TSX on the day before the\nPSUs and RSUs were granted (2024: $57.21; 2023: $69.66; 2022: $62.20). This PSU valuation methodology is different than the\naccounting fair value. In calculating the accounting fair value, the Company uses the Monte Carlo pricing model to assign a probability\nweighted ROCE and relative TSR factor to determine the number of PSUs that would be included in the valuation in accordance with\nthe PSU Plan. The 2022, 2023 and 2024 accounting fair values, as calculated on the grant date based on the Monte Carlo pricing\nmodel, are: CEO (2024: US$1,679,560; 2023: US$1,754,910; 2022: US$440,505), CFO (2024: US$433,820; 2023: US$487,475; 2022:\n88 Methanex 2025 Information Circular",
+        "91": "Introduction Voting Business of the Meeting About the Directors Corporate Governance Compensation Other Information\nUS$248,038), Senior VP, Manufacturing (2024: US$322,380; 2023: US$355,570; 2022: US$248,038), Senior VP, Global Marketing &\nLogistics (2024: US$306,460; 2023: US$344,100; 2022: US$153,160), Senior VP, Corporate Resources (2024: US$338,300; 2023:\nUS$372,775; 2022: US$454,059).\n(4) This column reflects the grant date fair value of stock options/SARs/TSARs received by NEOs as long-term incentive awards. The value\nshown is calculated by multiplying the number of stock options/SARs/TSARs granted by the Canadian dollar exercise price at the time\nof the grant by the Black-Scholes valuation factor (2024: exercise price = $57.21, Black-Scholes valuation factor = 45.06%; 2023:\nexercise price = $69.66, Black-Scholes valuation factor = 46.22%; 2022: exercise price = $62.20, Black-Scholes valuation factor =\n42.58%). This value is the same as the accounting fair value of the full grant but is not adjusted by the vesting schedule. The actual\nexercise price of stock options under the Stock Option/SARs/TSARs Plan is the US dollar closing price of the Common Shares on the\nNasdaq on the day before the stock options/SARs/TSARs were granted.\n(5) These annual short-term incentive awards are reported in the year in which they were earned, not in the year in which they were\nactually paid. They are paid in cash and/or DSUs in the year following the year in which they are earned. In 2024, Mr. Richardson\nelected to convert one-half of his annual incentive payment (to be paid in 2025) to DSUs as permitted under the terms of the\nDSU Plan whereby he received a number of DSUs equal in value to one-half of his annual short-term incentive award. All other NEOs\nelected to be paid in cash.\n(6) The amounts shown for Messrs. Sumner, Richardson and Boyd include the Company’s pension contributions both to the Company’s\nregular defined contribution pension plan and supplemental defined contribution retirement plan in Canada. The amount shown for\nMr. Parra includes pension contributions to the Chilean defined contribution plan in 2024 and 2023. In 2022, the amount includes\npension contributions to the Chilean defined benefit plan, which is closed to new members. Mr. Parra's membership in the Chilean\ndefined benefit plan ended December 31, 2022 and his benefits were fully settled as a lump sum payment. The amount shown for\nMs. Delbarre includes pension contributions to the Canadian defined contribution plan and the US defined contribution 401(k) plan.\nMs. Delbarre's membership in the Canadian supplemental defined contribution plan ended on April 30, 2024 and her benefits were\nfully settled as a lump sum payment. She did not meet the threshold to participate in the US supplemental defined contribution plan\nin 2024.\n(7) The amounts shown represent:\n• For Mr. Sumner: the Company’s contributions to the Company’s Employee Share Purchase Plan, the value of additional PSUs\ncorresponding to dividends declared on Common Shares (2024: $82,149 (1,350 units); 2023: $41,480 (706 units); 2022: $14,171\n(275 units)), the value of additional DSUs corresponding to dividends declared on Common Shares (2024: $11,306 (179 units)),\nperquisite allowance (2024: $66,000; 2023: $66,000; 2022: $57,000), payment related to trailing tax obligations from international\nassignments (2024: $5,967; 2023: $6,418; 2022: $324,137), other assignment-related expenses and other miscellaneous items.\n• For Mr. Richardson: the Company’s contributions to the Company’s Employee Share Purchase Plan, the value of additional PSUs\ncorresponding to dividends declared on Common Shares (2024: $23,941 (394 units); 2023: $15,456 (263 units); 2022: $8,799 (171\nunits)), perquisite allowance (2024: $57,000; 2023: $52,250; 2022: $21,600), payment related to trailing tax obligations from\ninternational assignments (2024: $20,231; 2023: $98,963; 2022: $180,705), other assignment-related expenses and other\nmiscellaneous items.\n• For Mr. Parra: the Company’s contributions to the Company’s Employee Share Purchase Plan, the value of additional PSUs\ncorresponding to dividends declared on Common Shares (2024: $18,667 (307 units); 2023: $14,655 (249 units); 2022: $11,830 (229\nunits)), perquisite allowance (2024: $68,783; 2023: $66,659; 2022: $47,362), payment related to trailing tax obligations from\ninternational assignments (2024: $465,644; 2023: $299,107), lump sum settlement from Chilean defined benefit pension plan\n(2022: $3,948,893), other assignment-related expenses and other miscellaneous items.\n• For Ms. Delbarre: the Company’s contributions to the Company’s Employee Share Purchase Plan, the value of additional PSUs\ncorresponding to dividends declared on Common Shares (2024: $16,563 (272 units); 2023: $11,177 (190 units); 2022: $7,296 (141\nunits)), the value of additional RSUs corresponding to dividends declared on Common Shares (2024: $1,198 (20 units); 2023: $2,639\n(45 units); 2022: $3,644 (71 units)), perquisite allowance (2024: $58,268; 2023: $57,129), payment related to trailing tax obligations\nresulting from her relocation from Canada to the United States (2024: $536,077; 2023: $297,042), other assignment-related\nexpenses and other miscellaneous items.\n• For Mr. Boyd: the Company’s contributions to the Company’s Employee Share Purchase Plan, the value of additional PSUs\ncorresponding to dividends declared on Common Shares (2024: $22,614 (372 units); 2023: $21,540 (367 units); 2022: $20,732 (402\nunits)), perquisite allowance (2024: $57,000; 2023: $57,000; 2022: $57,000) and other miscellaneous items.\nNo NEO spent 25% or more of the value of their perquisite allowance on any one perquisite. The amounts shown do not include\npayments made on settlement of PSUs granted in a prior year. Payments made on settlement of PSUs are reported in the table\nentitled “Outstanding Option-Based Awards and Share-Based Awards” found below.\nMethanex 2025 Information Circular 89"
+      }
     }
   ],
   "unresolved": [
@@ -5805,5 +7569,34 @@
       "reason": "No separate column in the Summary Compensation Table"
     }
   ],
-  "discovery_candidates": []
+  "discovery_candidates": [],
+  "removed_executives": [
+    {
+      "executive": "Brad Boyd",
+      "company": "Methanex Corp",
+      "symbol": "TSX:MX, NASDAQ:MEOH",
+      "baseline_row": 74,
+      "first_name": "Brad",
+      "last_name": "Boyd",
+      "title": "senior vice-president, corporate resources",
+      "roster_status": "removed",
+      "status": "Absent from the verified full target-year compensation roster; this does not establish employment termination.",
+      "rank": null,
+      "fiscal_end": null
+    },
+    {
+      "executive": "Ryan Nicometo",
+      "company": "Methanex",
+      "symbol": "",
+      "baseline_row": 102,
+      "first_name": "Ryan",
+      "last_name": "Nicometo",
+      "title": "senior vice-president",
+      "roster_status": "removed",
+      "status": "Absent from the verified full target-year compensation roster; this does not establish employment termination.",
+      "rank": null,
+      "fiscal_end": null
+    }
+  ],
+  "unverified_executives": []
 }

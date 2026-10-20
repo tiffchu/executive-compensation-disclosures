@@ -6,7 +6,7 @@ Collect original executive compensation disclosures without estimates or generat
 
 `outputs/pilot/` contains the workbook, JSON records, unresolved-item report and saved-workbook verification. The run covers fiscal years ending in **2025**, resolved from the local run date in 2026.
 
-The current workbook is **`execs_comp.xlsx`**, using the supplied `execs_comp_template.xlsx` layout and the annual-average FX policy. The current JSON and run report describe this workbook. Superseded outputs are recoverable from Git history. The template is preserved unchanged in `data/templates/`, pinned by SHA256 in `config/output_template.json` and the run metadata. Its example figures and hardcoded conversion formulas are not factual inputs.
+The current workbook is **`execs_comp_roster.xlsx`**, using the supplied `execs_comp_template.xlsx` layout and the annual-average FX policy. The current JSON and run report describe this workbook. Superseded outputs are recoverable from Git history. The template is preserved unchanged in `data/templates/`, pinned by SHA256 in `config/output_template.json` and the run metadata. Its example figures and hardcoded conversion formulas are not factual inputs.
 
 | Company | Executives | Compensation source | Audited income source |
 | --- | ---: | --- | --- |
@@ -60,6 +60,8 @@ Required columns: `company,symbol`. Optional columns:
 | `financial_document` | Separate original audited consolidated financial statements |
 | `executive` | Exact disclosed executive name; blank collects all disclosed NEO rows, including former officers |
 | `profile` | Reviewed profile name from `config/<name>.json` |
+| `prior_profile` | Optional original prior-period profile; defaults to `<profile>_prior` |
+| `prior_document` | Optional original prior-period document; defaults to `document` in the prior profile |
 
 Paths are relative to the repository root, or absolute. Several executive requests for the same company are grouped. Conflicting documents are rejected. Each selected company document is acquired and parsed once per run; PDF evidence is also cached by source hash. Requested names use exact normalized matching, preserving middle initials; ambiguous or absent matches are reported. No fuzzy identity guess is made.
 
@@ -94,7 +96,7 @@ Combined pension/deferred-compensation headings remain uncertain. Undifferentiat
 
 The `Results` tab follows the supplied template's columns A:AJ, starting with separate first and last names. Titles are lowercase and numeric footnote markers are removed from the display title; original identities/positions remain in JSON and source evidence. Given names and middle initials stay together in First Name, with the last name token in Last Name (for example, `Ian M.` / `Fillinger`, `S. Bruce` / `Luxmoore`). Compound surnames in future inputs require reviewed name handling. Rows are sorted by descending confirmed CAD total. Rank, separate long-term incentive USD/CAD columns, fiscal year-end and review notes follow the template columns. Competition ranks are recomputed within the supplied universe; equal totals share a rank. Missing totals remain unranked at the end. Values retain precision in JSON and Excel; monetary cells display full dollars.
 
-Only the target year is collected. Template prior-year, personal-email, company-net-income and industry cells remain empty. No example data is copied. The original USD columns are populated only for source-reported USD figures, expanded to full dollars using source units. Already reported CAD amounts are not reverse-converted to invent original USD figures. Headers update to the run's target year and prior-year label automatically. Verified net-income data remains in JSON for provenance, but is not exported into the ignored template column.
+The template is the default baseline roster. New names receive original prior-year values where available; personal-email, company-net-income and industry cells remain empty. No example compensation data is copied. The original USD columns are populated only for source-reported USD figures, expanded to full dollars using source units. Already reported CAD amounts are not reverse-converted to invent original USD figures. Headers update to the run's target year and prior-year label automatically. Verified net-income data remains in JSON for provenance, but is not exported into the ignored template column.
 
 `Source data` holds literal source cells, original labels, source-unit amounts, currency, unit multipliers, visible conversion formulas, original document dates/periods, PDF pages or HTML locators, hashes, source URLs, FX dates/URLs, mappings and review reasons. Exact source text, including footnotes, is retained at columns AA:AD. Full original documents remain available. The workbook is a run snapshot; re-run after modifying the input universe to refresh sort order.
 
@@ -116,7 +118,7 @@ PDF parsing caches (`data/extracted/`), Python bytecode, workbook previews and r
 
 Run `python -m unittest discover -s tests -v`. The **47 tests** cover fiscal-year rollover and actual end dates, multi-year alignment, exact identity/duplicates and name/title display, company document reuse, category mapping and source-supported arithmetic, zero versus NA/dash/blank, units, exact annual FX selection/snapshot integrity and CAD preservation, reconciliation, ranking, changed-hash rejection, former officers and reviewed HTML spans/locators. A future-date test verifies a 2027 run chooses the 2026 annual average and refuses a 2025 fallback. The rate is never pinned to 2025 or 1.3978 in production logic: each run fixes CURRENT YEAR - 1 from the local start date, selects that year's official annual observation, and retains the response/hash for reproducibility.
 
-Workbook validation checks all 128 current-year CAD cells and 25 original USD cells against Python results, checks ignored/prior-year cells are blank, and verifies split names and lowercase titles. It perturbs/restores a real USD FX input and tests blank-versus-zero recalculation. Both output tabs were visually inspected. `config/output_template.json` is the shared column map used by the builder and saved-file verifier.
+Workbook validation checks all 128 current-year CAD cells and 25 original USD cells against Python results, checks all 128 prior-year CAD positions against original-source values or required blanks, verifies red removed rows and ignored columns, and verifies split names and lowercase titles. It perturbs/restores a real USD FX input and tests blank-versus-zero recalculation. Both output tabs were visually inspected. `config/output_template.json` is the shared column map used by the builder and saved-file verifier.
 
 ## Remaining limits
 
@@ -126,3 +128,23 @@ Workbook validation checks all 128 current-year CAD cells and 25 original USD ce
 - Manual values are not filled automatically. Resolve flagged cells against source evidence, retain a review record, update a reviewed adapter when justified, and rerun. Keep verified independent fields.
 
 Everything is contained in this repository. `browser_autowork` is not used or modified.
+
+## Annual roster rollover
+
+The CLI compares the complete reviewed compensation roster for each input company against `--baseline` (default: the supplied template copy). Roster mode collects every disclosed executive for the selected companies, even when CSV executive filters were supplied, so additions cannot be filtered away. Only profiles explicitly reviewed as complete (`full_roster_reviewed: true`) can certify missing baseline names as removed. Those rows are retained at the end, highlighted red across A:AR, with blank compensation and rank. A failed, unsupported or unprocessed report never certifies removal. Companies outside the input universe are excluded. Former officers still in the target-year table remain collected.
+
+Names are compared within companies, normalizing case, whitespace, punctuation and terminal corporate suffixes. A unique omitted middle initial can match (`Ian Fillinger` / `Ian M. Fillinger`); conflicting initials and nicknames are not substituted. Initial collisions require identity review. Roster status is in AR. Removed means absent from the reviewed compensation table, not confirmed employment termination.
+
+Only **new** names receive prior-period values in the template's existing prior-year columns. AP:AQ hold separate prior-year long-term incentives. The collector reads a separately reviewed original prior-period disclosure with an exact hash and actual fiscal end; it does not silently use later comparative figures. Unknown values, missing original rows and unreviewed documents leave financial cells blank, with reasons in JSON/review notes. Original USD is retained only when the source reports USD; CAD values are never reverse-converted.
+
+Both periods are fixed at local run start: current compensation and its Bank of Canada annual average use **calendar year minus one**; new executives' prior compensation and its annual average use **calendar year minus two**. For a 2027 run this is 2026 and 2025 respectively. Each official FX response and URL/hash sidecar is retained. `--fx-file` and `--prior-fx-file` require exact-period official snapshots; there is no other-year fallback.
+
+For the present three-company pilot: 8 existing and 8 new names, plus 2 red baseline rows (Brad Boyd and Ryan Nicometo). Six new names have FY2024 original-source rows: Gustavo Parra, Karine Delbarre, Richard A. Pozzebon, S. Bruce Luxmoore, Andrew L. Horahan and Timothy P. Hartnett. Their source tables report CAD, preserved as reported. Michael C. Mackay and Kevin Maloney have no matching original FY2024 row, so those cells are blank. FY2024 originals are Interfor's March 12, 2025 circular (PDF page 58) and Methanex's March 6, 2025 circular (PDF pages 90–91). The retained official 2024 USD annual average is 1.3698 CAD per USD.
+
+For next year's baseline, pass the reviewed current output, for example:
+
+```powershell
+python scripts/run.py run --baseline outputs/pilot/execs_comp_roster.xlsx
+```
+
+Every nondefault baseline is snapshotted by SHA256 into `data/reference/` before output replacement, so a rerun can reproduce the comparison even when input and output workbook paths coincide. Previously red rows are excluded from the next baseline. Supply and review the next year's original documents and profiles before collecting that year; old profiles fail the fiscal-year check. Automatic year selection does not certify unreviewed future reports.

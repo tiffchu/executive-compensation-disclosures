@@ -1,12 +1,15 @@
 {
-  "saved_xlsx_checked": "execs_comp.xlsx",
+  "saved_xlsx_checked": "execs_comp_roster.xlsx",
   "sheets": [
     "Results",
     "Source data"
   ],
   "cad_cells_checked": 128,
   "original_usd_cells_checked": 25,
-  "blank_columns_checked": 17,
+  "blank_columns_checked": 3,
+  "prior_cad_cells_checked": 128,
+  "removed_rows_checked": 2,
+  "red_removal_rule": "verified",
   "identity_and_lowercase_titles": "verified",
   "formula_errors": 0,
   "authoring_process_exit_code": 3221226505

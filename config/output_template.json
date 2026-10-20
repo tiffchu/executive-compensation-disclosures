@@ -1,15 +1,72 @@
 {
   "template_sha256": "370b4d91de66c4c605040de717ba9e1e9e97fb2a00d70cbab14de65e7e1e8831",
   "fields": [
-    {"field": "salary", "usd": "H", "cad": "J"},
-    {"field": "share_awards", "usd": "L", "cad": "N"},
-    {"field": "option_awards", "usd": "P", "cad": "R"},
-    {"field": "annual_incentive", "usd": "T", "cad": "V"},
-    {"field": "pension", "usd": "X", "cad": "Z"},
-    {"field": "other", "usd": "AB", "cad": "AD"},
-    {"field": "total", "usd": "AF", "cad": "AG"},
-    {"field": "long_term_incentive", "usd": "AL", "cad": "AM"}
+    {
+      "field": "salary",
+      "usd": "H",
+      "cad": "J",
+      "prior_usd": "I",
+      "prior_cad": "K"
+    },
+    {
+      "field": "share_awards",
+      "usd": "L",
+      "cad": "N",
+      "prior_usd": "M",
+      "prior_cad": "O"
+    },
+    {
+      "field": "option_awards",
+      "usd": "P",
+      "cad": "R",
+      "prior_usd": "Q",
+      "prior_cad": "S"
+    },
+    {
+      "field": "annual_incentive",
+      "usd": "T",
+      "cad": "V",
+      "prior_usd": "U",
+      "prior_cad": "W"
+    },
+    {
+      "field": "pension",
+      "usd": "X",
+      "cad": "Z",
+      "prior_usd": "Y",
+      "prior_cad": "AA"
+    },
+    {
+      "field": "other",
+      "usd": "AB",
+      "cad": "AD",
+      "prior_usd": "AC",
+      "prior_cad": "AE"
+    },
+    {
+      "field": "total",
+      "usd": "AF",
+      "cad": "AG",
+      "prior_usd": "AH",
+      "prior_cad": "AI"
+    },
+    {
+      "field": "long_term_incentive",
+      "usd": "AL",
+      "cad": "AM",
+      "prior_usd": "AP",
+      "prior_cad": "AQ"
+    }
   ],
-  "blank_columns": ["C", "D", "G", "I", "K", "M", "O", "Q", "S", "U", "W", "Y", "AA", "AC", "AE", "AH", "AI"],
-  "first_name": "A", "last_name": "B", "company": "E", "title": "F", "symbol": "AJ", "rank": "AK"
+  "blank_columns": [
+    "C",
+    "D",
+    "G"
+  ],
+  "first_name": "A",
+  "last_name": "B",
+  "company": "E",
+  "title": "F",
+  "symbol": "AJ",
+  "rank": "AK"
 }

@@ -10,3 +10,4 @@ data/extracted/
 # Do not track superseded workbooks if an open Excel window restores them.
 outputs/pilot/compensation.xlsx
 outputs/pilot/compensation_annual_average.xlsx
+outputs/pilot/execs_comp.xlsx

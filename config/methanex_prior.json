@@ -1,0 +1,107 @@
+{
+  "sha256": "61e4354b76985e8dfeebdee7ff9914737339630f5b958134134fb3e4247f6575",
+  "original_disclosure_reviewed": true,
+  "selection_note": "Original 2025 issuer circular for fiscal year ended December 31, 2024, selected from official issuer reports archive; no later comparative substitution.",
+  "document_date": "2025-03-06",
+  "fiscal_end": "2024-12-31",
+  "table_page": 90,
+  "table_y": [
+    320,
+    547
+  ],
+  "year_x": 141.55,
+  "currency": "CAD",
+  "expected_rows": 5,
+  "guards": [
+    {
+      "page": 90,
+      "text": "SUMMARY COMPENSATION TABLE"
+    },
+    {
+      "page": 90,
+      "text": "are in Canadian dollars"
+    }
+  ],
+  "footnote_reference": "PDF pp.90-91, Summary Compensation Table notes. Preserve issuer-reported CAD and grant-date awards.",
+  "evidence_pages": [
+    90,
+    91
+  ],
+  "columns": [
+    {
+      "field": "salary",
+      "label": "Base Salary(2)",
+      "x": [
+        165,
+        212
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "share_awards",
+      "label": "Share-Based Awards(3)",
+      "x": [
+        212,
+        260
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "option_awards",
+      "label": "Option-Based Awards(4)",
+      "x": [
+        260,
+        308
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "annual_incentive",
+      "label": "Non-Equity Incentive Plan Compensation - Annual Incentive Plans(5)",
+      "x": [
+        308,
+        356
+      ],
+      "mapping": "Annual short-term incentive heading; direct mapping, no long-term amounts combined."
+    },
+    {
+      "field": "long_term_incentive",
+      "label": "Non-Equity Incentive Plan Compensation - Long-Term Incentive Plans",
+      "x": [
+        356,
+        401
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "pension",
+      "label": "Pension Value(6)",
+      "x": [
+        401,
+        449
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "other",
+      "label": "All Other Compensation(7)",
+      "x": [
+        449,
+        498
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    },
+    {
+      "field": "total",
+      "label": "Total Compensation",
+      "x": [
+        498,
+        560
+      ],
+      "mapping": "Reported table value; no award revaluation or reconstruction."
+    }
+  ],
+  "full_roster_reviewed": true,
+  "document": "data/documents/methanex_circular_2025.pdf",
+  "identity_top_tolerance": 4
+}

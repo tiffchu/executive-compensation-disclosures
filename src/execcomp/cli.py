@@ -10,13 +10,22 @@ def main():
     sub=parser.add_subparsers(dest='command',required=True)
     collect=sub.add_parser('run'); collect.add_argument('--input',default='inputs/pilot.csv'); collect.add_argument('--output',default='outputs/pilot'); collect.add_argument('--no-excel',action='store_true')
     collect.add_argument('--profile-dir'); collect.add_argument('--fx-file')
-    collect.add_argument('--workbook-name',default='execs_comp.xlsx')
+    collect.add_argument('--baseline',default='data/templates/execs_comp_template.xlsx')
+    collect.add_argument('--prior-fx-file')
+    collect.add_argument('--workbook-name',default='execs_comp_roster.xlsx')
     discovery=sub.add_parser('discover'); discovery.add_argument('ir_url'); discovery.add_argument('--year',type=int,required=True)
     html=sub.add_parser('inspect-html'); html.add_argument('path')
     args=parser.parse_args()
     if args.command=='discover': print(json.dumps(discover(args.ir_url,args.year),indent=2)); return
     if args.command=='inspect-html': print(json.dumps(html_tables(args.path),indent=2)); return
-    result=run(ROOT,ROOT/args.input,ROOT/args.output,profile_dir=args.profile_dir,fx_path=args.fx_file)
+    baseline=ROOT/args.baseline
+    if baseline.resolve()!=(ROOT/'data/templates/execs_comp_template.xlsx').resolve():
+        import hashlib
+        raw=baseline.read_bytes(); saved=ROOT/'data/reference'/('baseline_'+hashlib.sha256(raw).hexdigest()+'.xlsx')
+        saved.parent.mkdir(parents=True,exist_ok=True)
+        if not saved.exists(): saved.write_bytes(raw)
+        baseline=saved
+    result=run(ROOT,ROOT/args.input,ROOT/args.output,profile_dir=args.profile_dir,fx_path=args.fx_file,baseline_path=baseline,prior_fx_path=args.prior_fx_file)
     if Path(args.workbook_name).name!=args.workbook_name or not args.workbook_name.endswith('.xlsx'): parser.error('--workbook-name must be an XLSX filename')
     result['run']['workbook_filename']=args.workbook_name
     template=ROOT/'data/templates/execs_comp_template.xlsx'

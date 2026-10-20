@@ -16,7 +16,7 @@ COMMON=[('salary','Salary'),('share_awards','Share Based Awards (1)(2)'),('optio
 def make(name,page,yr_x,table_y,edges,currency,count,date,guards,footnotes,columns=None):
     cols=columns or COMMON
     profile={'sha256':hashlib.sha256((ROOT/'data/documents'/f'{name}_circular.pdf').read_bytes()).hexdigest(),
-      'original_disclosure_reviewed':True,'selection_note':'Original 2026 issuer circular for fiscal year ended December 31, 2025, obtained from issuer investor-relations archive; no amendment or later comparative substitution.',
+      'original_disclosure_reviewed':True,'full_roster_reviewed':True,'selection_note':'Original 2026 issuer circular for fiscal year ended December 31, 2025, obtained from issuer investor-relations archive; no amendment or later comparative substitution.',
       'document_date':date,'fiscal_end':'2025-12-31','table_page':page,'table_y':table_y,'year_x':yr_x,'currency':currency,'expected_rows':count,
       'guards':guards,'footnote_reference':footnotes,
       'evidence_pages':sorted(set([page]+[g['page'] for g in guards]+([page+1] if name!='b2gold' else []))),

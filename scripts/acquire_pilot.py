@@ -8,6 +8,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
 from execcomp.documents import fetch
 URLS = {
+ 'fx_annual_2024.json':'https://www.bankofcanada.ca/valet/observations/group/FX_RATES_ANNUAL/json?start_date=2024-01-01&end_date=2024-12-31',
+ 'interfor_circular_2025.pdf':'https://interfor.com/wp-content/uploads/2025/03/Information-Circular.pdf',
+ 'methanex_circular_2025.pdf':'https://www.methanex.com/wp-content/uploads/2025-Information-Circular.pdf',
  'fx_annual_2025.json':'https://www.bankofcanada.ca/valet/observations/group/FX_RATES_ANNUAL/json?start_date=2025-01-01&end_date=2025-12-31',
  'b2gold_financials.pdf':'https://s204.q4cdn.com/324791784/files/doc_financials/2026/ar/Compliled-BTG-12-31-25-40-F-March-11-2026.pdf',
  'b2gold_circular.pdf':'https://s204.q4cdn.com/324791784/files/doc_downloads/2026/04/B2Gold-MIC-FYE-December-31-2025.pdf',
